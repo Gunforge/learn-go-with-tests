@@ -73,24 +73,37 @@
 <!-- 15. [Maths](math.md) - Use the `math` package to draw an SVG clock -->
 15. [Maths](math.md) - `math` 패키지를 이용해 SVG로 시계를 그릴 수도 있습니다.
 
-### Build an application
+<!-- ### Build an application -->
+### 어플리케이션 빌드하기
 
-Now that you have hopefully digested the _Go Fundamentals_ section you have a solid grounding of a majority of Go's language features and how to do TDD.
+<!-- Now that you have hopefully digested the _Go Fundamentals_ section you have a solid grounding of a majority of Go's language features and how to do TDD. -->
+이제 _Go 핵심_ 섹션을 완전히 이해하셨을 거라 믿습니다. 여러분은 Go 언어의 기능 그리고 TDD를 어떻게 하는지에 대해 탄탄한 기초를 쌓았습니다.
 
-This next section will involve building an application.
+<!-- This next section will involve building an application. -->
+이번 섹션은 어플리케이션 빌드를 다룹니다.
 
-Each chapter will iterate on the previous one, expanding the application's functionality as our product owner dictates.
+<!-- Each chapter will iterate on the previous one, expanding the application's functionality as our product owner dictates. -->
+각 챕터에서는 그 이전 챕터를 복습하고, 우리 사장님이 이래라 저래라 시키는 대로 어플리케이션의 기능을 확장할 겁니다.
 
-New concepts will be introduced to help facilitate writing great code but most of the new material will be learning what can be accomplished from Go's standard library.
+<!-- New concepts will be introduced to help facilitate writing great code but most of the new material will be learning what can be accomplished from Go's standard library. -->
+훌륭한 코드를 작성하는데 도움을 주는 새로운 개념에 대해 소개합니다. 하지만 대부분은 Go의 표준 라이브러리로 어떤 것들을 해낼 수 있는 지를 다룹니다.
 
-By the end of this, you should have a strong grasp as to how to iteratively write an application in Go, backed by tests.
+<!-- By the end of this, you should have a strong grasp as to how to iteratively write an application in Go, backed by tests. -->
+이 섹션의 마지막에서는, 테스트로 뒷받침되는 Go 어플리케이션을 여러분이 어떻게 반복해서 작성할 수 있는지에 대해 깊은 이해를 갖게 될 것입니다.
 
-* [HTTP server](http-server.md) - We will create an application which listens to HTTP requests and responds to them.
+<!-- * [HTTP server](http-server.md) - We will create an application which listens to HTTP requests and responds to them.
 * [JSON, routing and embedding](json.md) - We will make our endpoints return JSON and explore how to do routing.
 * [IO and sorting](io.md) - We will persist and read our data from disk and we'll cover sorting data.
 * [Command line & project structure](command-line.md) - Support multiple applications from one code base and read input from command line.
 * [Time](time.md) - using the `time` package to schedule activities.
-* [WebSockets](websockets.md) - learn how to write and test a server that uses WebSockets.
+* [WebSockets](websockets.md) - learn how to write and test a server that uses WebSockets. -->
+* [HTTP 서버](http-server.md) - HTTP 요청을 받고 반환하는 어플리케이션을 만듭니다.
+* [JSON, 라우팅, 임베딩](json.md) - JSON을 반환하는 엔드포인트를 만들고 어떻게 라우팅을 하는지 알아봅니다.
+* [IO와 정렬](io.md) - 디스크에 데이터를 저장하고 읽어 보고, 데이터 정렬에 대해 다룹니다.
+* [커맨드 라인 & 프로젝트 구조](command-line.md) - 하나의 코드 베이스로 여러 개의 어플리케이션을 지원해보고, 커맨드 라인으로부터 입력을 읽어 봅니다.
+* [Time](time.md) - 작업 스케줄링을 위해 `time` 패키지를 사용하기
+* [WebSockets](websockets.md) - 웹소켓을 이용하는 서버를 어떻게 작성하고 테스트하는지에 대해 배웁니다.
+
 
 ### Questions and answers
 
