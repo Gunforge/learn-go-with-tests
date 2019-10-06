@@ -124,9 +124,11 @@ go get -u github.com/go-delve/delve/cmd/dlv
 <!-- ## Go Linting -->
 ## Go 린트 (Lint)
 
-An improvement over the default linter can be configured using [GolangCI-Lint](https://github.com/golangci/golangci-lint).
+<!-- An improvement over the default linter can be configured using [GolangCI-Lint](https://github.com/golangci/golangci-lint). -->
+Go 에서 제공하는 린터도 있지만, 좀 더 많은 기능을 제공하는 [GolangCI-Lint](https://github.com/golangci/golangci-lint)을 설치해 봐요.
 
-This can be installed as follows:
+<!-- This can be installed as follows: -->
+아래의 커맨드로 설치할 수 있어요.
 
 ```sh
 go get -u github.com/golangci/golangci-lint/cmd/golangci-lint
