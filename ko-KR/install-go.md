@@ -1,4 +1,5 @@
-# Install Go, set up environment for productivity
+<!-- # Install Go, set up environment for productivity -->
+# Go 개발환경 설정하기
 
 The official installation instructions for Go are available [here](https://golang.org/doc/install).
 
@@ -6,7 +7,8 @@ This guide will assume that you are using a package manager for e.g. [Homebrew](
 
 For demonstration purposes we will show the installation procedure for OSX using Homebrew.
 
-## Installation
+<!-- ## Installation -->
+## Go 설치 
 
 The process of installation is very easy. First, what you have to do is to run this command to install homebrew (brew). Brew has a dependency on Xcode so you should ensure this is installed first.
 
@@ -35,7 +37,8 @@ $ go version
 go version go1.10 darwin/amd64
 ```
 
-## Go Environment
+<!-- ## Go Environment -->
+## Go 개발 환경
 
 Go is opinionated.
 
@@ -62,7 +65,8 @@ mkdir -p $GOPATH/src $GOPATH/pkg $GOPATH/bin
 
 At this point you can _go get_ and the src/package/bin will be installed correctly in the appropriate $GOPATH/xxx directory.
 
-## Go Editor
+<!-- ## Go Editor -->
+## Go 코드 편집기
 
 Editor preference is very individualistic, you may already have a preference that supports Go. If you don't you should consider an Editor such as [Visual Studio Code](https://code.visualstudio.com), which has exceptional Go support.
 
@@ -86,7 +90,8 @@ code --install-extension ms-vscode.go
 
 When you open a Go file for the first time in VS Code, it will indicate that the Analysis tools are missing, you should click the button to install these. The list of tools that gets installed (and used) by VS Code are available [here](https://github.com/Microsoft/vscode-go/wiki/Go-tools-that-the-Go-extension-depends-on).
 
-## Go Debugger
+<!-- ## Go Debugger -->
+## Go 디버거
 
 A good option for debugging Go (that's integrated with VS Code) is Delve. This can be installed as follows using go get:
 
@@ -94,7 +99,8 @@ A good option for debugging Go (that's integrated with VS Code) is Delve. This c
 go get -u github.com/go-delve/delve/cmd/dlv
 ```
 
-## Go Linting
+<!-- ## Go Linting -->
+## Go 린트 (Lint)
 
 An improvement over the default linter can be configured using [GolangCI-Lint](https://github.com/golangci/golangci-lint).
 
@@ -104,7 +110,8 @@ This can be installed as follows:
 go get -u github.com/golangci/golangci-lint/cmd/golangci-lint
 ```
 
-## Refactoring and your tooling
+<!-- ## Refactoring and your tooling -->
+## 리팩토링을 위한 툴
 
 A big emphasis of this book is around the importance of refactoring.
 
@@ -126,6 +133,7 @@ In addition, to help you work with your code you should be able to:
 
 Mastering your tools will help you concentrate on the code and reduce context switching.
 
-## Wrapping up
+<!-- ## Wrapping up -->
+## 뭘했죠?
 
 At this point you should have Go installed, an editor available and some basic tooling in place. Go has a very large ecosystem of third party products. We have identified a few useful components here, for a more complete list see https://awesome-go.com.
