@@ -137,25 +137,39 @@ go get -u github.com/golangci/golangci-lint/cmd/golangci-lint
 <!-- ## Refactoring and your tooling -->
 ## 리팩토링을 위한 툴
 
-A big emphasis of this book is around the importance of refactoring.
+<!-- A big emphasis of this book is around the importance of refactoring. -->
+이 책은 리팩토링을 매우 중요하게 생각하고 계속 강조할 거에요.
 
-Your tools can help you do bigger refactoring with confidence.
+<!-- Your tools can help you do bigger refactoring with confidence. -->
+리팩토링을 도와주는 툴들이 있으면, 프로그램이 망가질 걱정없이 리팩토링 할 수 있어요.
 
-You should be familiar enough with your editor to perform the following with a simple key combination:
+<!-- You should be familiar enough with your editor to perform the following with a simple key combination: -->
+아래의 작업들을 단축키를 사용해서 빠르게 사용하는데에 익숙해지는 걸 추천해요:
 
-- **Extract/Inline variable**. Being able to take magic values and give them a name lets you simplify your code quickly
+<!-- - **Extract/Inline variable**. Being able to take magic values and give them a name lets you simplify your code quickly
 - **Extract method/function**. It is vital to be able to take a section of code and extract functions/methods
 - **Rename**. You should be able to confidently rename symbols across files.
 - **go fmt**. Go has an opinioned formatter called `go fmt`. Your editor should be running this on every file save.
-- **Run tests**. It goes without saying that you should be able to do any of the above and then quickly re-run your tests to ensure your refactoring hasn't broken anything
+- **Run tests**. It goes without saying that you should be able to do any of the above and then quickly re-run your tests to ensure your refactoring hasn't broken anything -->
+- **Extract/Inline variable**. 의미를 알 수 없이 떡하니 적혀있는 숫자들을 변수로서 이름을 부여해서 코드를 깔끔하게 해요.
+- **Extract method/function**. 코드를 추출해서 function이나 method로 빼낼 수 있어야 해요.
+- **Rename**. 여러 파일의 변수이름을 같이, 빠르게 수정할 수 있어야 해요.
+- **go fmt**. Go 에는 `go fmt` 라는 포매터가 있어요. 저장할 떄 마다 에디터에서 이걸 자동으로 실행시킬 수 있어야 해요.
+- **Run tests**. 리팩토링을 빠르게 진행하면서, 프로그램의 다른 부분이 망가지지 않았는지 계속 확인 할 수 있어야 해요.
 
-In addition, to help you work with your code you should be able to:
 
-- **View function signature** - You should never be unsure how to call a function in Go. Your IDE should describe a function in terms of its documentation, its parameters and what it returns.
+<!-- In addition, to help you work with your code you should be able to: -->
+더해서, 코드를 효율적으로 짜기 위해서는 이것들을 할 수 있어야 해요:
+
+<!-- - **View function signature** - You should never be unsure how to call a function in Go. Your IDE should describe a function in terms of its documentation, its parameters and what it returns.
 - **View function definition** - If it's still not clear what a function does, you should be able to jump to the source code and try and figure it out yourself.
-- **Find usages of a symbol** - Being able to see the context of a function being called can help your decision process when refactoring.
+- **Find usages of a symbol** - Being able to see the context of a function being called can help your decision process when refactoring. -->
+- **View function signature** - 함수의 시그니처를 확인해서, 그 함수의 파라미터와 리턴 값들을 확인 할 수 있어야 해요.
+- **View function definition** - 시그니처를 봐도 그 함수가 뭘하는지 모르겠을 떄는 빠르게 정의로 이동해서 함수를 확인 할 수 있어야 해요.
+- **Find usages of a symbol** - 함수가 다른 곳에서 어떻게 쓰이는지 확인해서 리팩토링을 바르게 진행할 수 있어야 해요.
 
-Mastering your tools will help you concentrate on the code and reduce context switching.
+<!-- Mastering your tools will help you concentrate on the code and reduce context switching. -->
+툴을 사용하는데 익숙해지면 코드를 짜는 것 이외의 일들이 단순해져서 더 집중하기 쉬울거에요.
 
 <!-- ## Wrapping up -->
 ## 뭘했죠?
