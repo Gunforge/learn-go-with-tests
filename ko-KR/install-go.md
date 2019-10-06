@@ -114,7 +114,8 @@ VS Code 에서 Go 파일을 열면 이런 저런 툴들을 추천해 줄 거에�
 <!-- ## Go Debugger -->
 ## Go 디버거
 
-A good option for debugging Go (that's integrated with VS Code) is Delve. This can be installed as follows using go get:
+<!-- A good option for debugging Go (that's integrated with VS Code) is Delve. This can be installed as follows using go get: -->
+Go를 디버깅 하기 위한 툴은 여러 가지가 있지만 VS Code에서 사용하기 좋은건 Delve이에요. go get 커맨드를 이용해서 아래처럼 설치할 수 있어요.
 
 ```sh
 go get -u github.com/go-delve/delve/cmd/dlv
