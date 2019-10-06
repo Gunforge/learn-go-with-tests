@@ -1,11 +1,14 @@
 <!-- # Install Go, set up environment for productivity -->
 # Go 개발환경 설정하기
 
-The official installation instructions for Go are available [here](https://golang.org/doc/install).
+<!-- The official installation instructions for Go are available [here](https://golang.org/doc/install). -->
+[여기서](https://golang.org/doc/install) 공식 설치 가이드를 확인 할 수 있어요.
 
-This guide will assume that you are using a package manager for e.g. [Homebrew](https://brew.sh), [Chocolatey](https://chocolatey.org), [Apt](https://help.ubuntu.com/community/AptGet/Howto) or [yum](https://access.redhat.com/solutions/9934).
+<!-- This guide will assume that you are using a package manager for e.g. [Homebrew](https://brew.sh), [Chocolatey](https://chocolatey.org), [Apt](https://help.ubuntu.com/community/AptGet/Howto) or [yum](https://access.redhat.com/solutions/9934). -->
+이 문서에서는 여러분이 [Homebrew](https://brew.sh), [Chocolatey](https://chocolatey.org), [Apt](https://help.ubuntu.com/community/AptGet/Howto) or [yum](https://access.redhat.com/solutions/9934) 같은 패키지 매니저를 쓰고 있는걸 전제로 합니다.
 
-For demonstration purposes we will show the installation procedure for OSX using Homebrew.
+<!-- For demonstration purposes we will show the installation procedure for OSX using Homebrew. -->
+데모에서는 OSX에서 homebrew를 사용해서 설치 과정을 보여드릴 거에요.
 
 <!-- ## Installation -->
 ## Go 설치 
