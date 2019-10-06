@@ -84,27 +84,32 @@ mkdir -p $GOPATH/src $GOPATH/pkg $GOPATH/bin
 <!-- ## Go Editor -->
 ## Go 코드 편집기
 
-Editor preference is very individualistic, you may already have a preference that supports Go. If you don't you should consider an Editor such as [Visual Studio Code](https://code.visualstudio.com), which has exceptional Go support.
+<!-- Editor preference is very individualistic, you may already have a preference that supports Go. If you don't you should consider an Editor such as [Visual Studio Code](https://code.visualstudio.com), which has exceptional Go support. -->
+에디터는 취향을 많이 타죠. 좋아하시는 에디터가 있으시면 그대로 쓰시면 돼요. 혹시 아직 좋아하는 에디터가 없으시면 [Visual Studio Code](https://code.visualstudio.com)를 고려해 보세요. 끝내줍니다!
 
-You can install it using the following command:
+<!-- You can install it using the following command: -->
+OSX환경에서는 아래 커맨드를 입력해면 바로 설치할 수 있어요.
 
 ```sh
 brew cask install visual-studio-code
 ```
 
-You can confirm VS Code installed correctly you can run the following in your shell.
+<!-- You can confirm VS Code installed correctly you can run the following in your shell. -->
+끝났다면 아래에 있는 커맨드를 입력해서 VS Code가 잘 설치 됐는지 확인해요. 
 
 ```sh
 code .
 ```
 
-VS Code is shipped with very little software enabled, you can enable new software by installing extensions. To add Go support you must install an extension, there are a variety available for VS Code, an exceptional one is [Luke Hoban's package](https://github.com/Microsoft/vscode-go). This can be installed as follows:
+<!-- VS Code is shipped with very little software enabled, you can enable new software by installing extensions. To add Go support you must install an extension, there are a variety available for VS Code, an exceptional one is [Luke Hoban's package](https://github.com/Microsoft/vscode-go). This can be installed as follows: -->
+VS Code는 최소한의 기능들만 가진 상태로 설치되기 때문에, 확장 기능(extension)을 설치해서 사용하는게 좋아요. 우리는 Go를 쓸거니까 [Luke Hoban's package](https://github.com/Microsoft/vscode-go)를 설치하도록 해요. 다음 커맨드를 입력하면 설치할 수 있어요.
 
 ```sh
 code --install-extension ms-vscode.go
 ```
 
-When you open a Go file for the first time in VS Code, it will indicate that the Analysis tools are missing, you should click the button to install these. The list of tools that gets installed (and used) by VS Code are available [here](https://github.com/Microsoft/vscode-go/wiki/Go-tools-that-the-Go-extension-depends-on).
+<!-- When you open a Go file for the first time in VS Code, it will indicate that the Analysis tools are missing, you should click the button to install these. The list of tools that gets installed (and used) by VS Code are available [here](https://github.com/Microsoft/vscode-go/wiki/Go-tools-that-the-Go-extension-depends-on). -->
+VS Code 에서 Go 파일을 열면 이런 저런 툴들을 추천해 줄 거에요. 다 좋은 것들이니까 설치합시다. 설치되는 리스트는 [여기](https://github.com/Microsoft/vscode-go/wiki/Go-tools-that-the-Go-extension-depends-on) 에서 확인 가능해요.
 
 <!-- ## Go Debugger -->
 ## Go 디버거
