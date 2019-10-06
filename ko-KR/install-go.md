@@ -48,30 +48,38 @@ go version go1.10 darwin/amd64
 <!-- ## Go Environment -->
 ## Go 개발 환경
 
-Go is opinionated.
+<!-- Go is opinionated. -->
+Go 가 동작하는 환경은 시스템 전체에 하나로 통합되어 있어요.
 
-By convention, all Go code lives within a single workspace (folder). This workspace could be anywhere in your machine. If you don't specify, Go will assume $HOME/go as the default workspace. The workspace is identified (and modified) by the environment variable [GOPATH](https://golang.org/cmd/go/#hdr-GOPATH_environment_variable).
+<!-- By convention, all Go code lives within a single workspace (folder). This workspace could be anywhere in your machine. If you don't specify, Go will assume $HOME/go as the default workspace. The workspace is identified (and modified) by the environment variable [GOPATH](https://golang.org/cmd/go/#hdr-GOPATH_environment_variable). -->
+Go는 공식적으로 모든 Go 코드가 하나의 공간(workspace)안에 있어야 한다는 약속을 정해 뒀어요. 컴퓨터의 임의의 장소를 이 공간으로 설정할 수 있죠. 설정을 하지 않았다면 Go는 $HOME/go 디렉토리를 기본 공간으로 설정해요. 공간을 설정하고 싶다면 환경 변수 [GOPATH](https://golang.org/cmd/go/#hdr-GOPATH_environment_variable) 를 설정하면 돼요.
 
-You should set the environment variable so that you can use it later in scripts, shells, etc.
+<!-- You should set the environment variable so that you can use it later in scripts, shells, etc. -->
+여러분이 만든 스크립트를 사용하거나, 쉘 환경을 제대로 동작하게 만드려면 환경변수를 설정해야 돼요.
 
-Update your .bash_profile to contain the following exports:
+<!-- Update your .bash_profile to contain the following exports: -->
+홈에 있는 .bash_profile 파일에 아래 내용을 추가해서 GOPATH를 설정해요.
 
 ```sh
 export GOPATH=$HOME/go
 export PATH=$PATH:$GOPATH/bin
 ```
 
-*Note* you should open a new shell to pickup these environment variables.
+<!-- *Note* you should open a new shell to pickup these environment variables. -->
+*주의* 파일을 수정한 뒤에는 쉘을 새로 열어야 환경변수 설정이 반영돼요.
 
-Go assumes that your workspace contains a specific directory structure.
+<!-- Go assumes that your workspace contains a specific directory structure. -->
+여러분의 작업 공간은 Go에서 정한 디렉토리 구조를 따라야 정상적으로 작동해요.
 
-Go places its files in three directories: All source code lives in src, package objects lives in pkg, and the compiled programs live in bin. You can create these directories as follows.
+<!-- Go places its files in three directories: All source code lives in src, package objects lives in pkg, and the compiled programs live in bin. You can create these directories as follows. -->
+이 디렉토리 구조는 세개의 디렉토리를 포함해요. 모든 소스 코드는 src 디렉토리에, 모든 패키지 오브젝트는 pkg에, 모든 컴파일 된 프로그램은 bin에 있어야 해요. 디렉토리 구조를 생성하기 위해서는 아래의 커맨드를 실행하면 돼요.
 
 ```sh
 mkdir -p $GOPATH/src $GOPATH/pkg $GOPATH/bin
 ```
 
-At this point you can _go get_ and the src/package/bin will be installed correctly in the appropriate $GOPATH/xxx directory.
+<!-- At this point you can _go get_ and the src/package/bin will be installed correctly in the appropriate $GOPATH/xxx directory. -->
+이제 _go get_ 을 실행하면 Go가 알아서 src/package/bin 안의 컨텐츠를 설정해 줄거에요.
 
 <!-- ## Go Editor -->
 ## Go 코드 편집기
