@@ -13,27 +13,32 @@
 <!-- ## Installation -->
 ## Go 설치 
 
-The process of installation is very easy. First, what you have to do is to run this command to install homebrew (brew). Brew has a dependency on Xcode so you should ensure this is installed first.
+<!-- The process of installation is very easy. First, what you have to do is to run this command to install homebrew (brew). Brew has a dependency on Xcode so you should ensure this is installed first. -->
+Go를 설치하는건 매우 간단해요. 먼저, homebrew를 설치합니다. Brew를 설치하려면 Xcode가 필요하기 때문에 Xcode가 설치되어 있는지 확인 해주세요.
 
 ```sh
 xcode-select --install
 ```
 
-Then you run the following to install homebrew:
+<!-- Then you run the following to install homebrew: -->
+끝났다면 아래의 커맨드를 입력해서 homebrew를 설치합니다:
 
 ```sh
 /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 ```
 
-At this point you can now install Go:
+<!-- At this point you can now install Go: -->
+이제 Go를 설치해요:
 
 ```sh
 brew install go
 ```
 
-*You should follow any instructions recommended by your package manager. **Note** these may be host os specific*.
+<!-- *You should follow any instructions recommended by your package manager. **Note** these may be host os specific*. -->
+*패키지 매니저에 따라서 커맨드가 다르기 때문에 사용하는 패키지 매니저의 가이드를 따라주세요. **주의** 이 가이드는 호스트 os에 의존적입니다 (OSX)*
 
-You can verify the installation with:
+<!-- You can verify the installation with: -->
+제대로 설치 되었는지는 아래의 커멘드로 확인 할 수 있어요.
 
 ```sh
 $ go version
