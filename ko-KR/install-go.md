@@ -174,4 +174,5 @@ go get -u github.com/golangci/golangci-lint/cmd/golangci-lint
 <!-- ## Wrapping up -->
 ## 뭘했죠?
 
-At this point you should have Go installed, an editor available and some basic tooling in place. Go has a very large ecosystem of third party products. We have identified a few useful components here, for a more complete list see https://awesome-go.com.
+<!-- At this point you should have Go installed, an editor available and some basic tooling in place. Go has a very large ecosystem of third party products. We have identified a few useful components here, for a more complete list see https://awesome-go.com. -->
+여러분은 Go를 설치하고 에디터를 설정했어요. Go는 서드파티를 포함한 매우 큰 에코 시스템을 가지고 있는 언어에요. 이 책에서 그 중 몇몇을 언급할 것이지만 좀 더 많은 컴포넌트들을 확인하고 싶다면 이 링크로 들어가 보세요 https://awesome-go.com.
