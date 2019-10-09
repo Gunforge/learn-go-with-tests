@@ -33,13 +33,17 @@ func main() {
 }
 ```
 
-## How it works
+<!-- ## How it works -->
+## 동작 원리
 
-When you write a program in Go you will have a `main` package defined with a `main` func inside it. Packages are ways of grouping up related Go code together.
+<!-- When you write a program in Go you will have a `main` package defined with a `main` func inside it. Packages are ways of grouping up related Go code together. -->
+Go에서 프로그램을 작성할때는 `main` 패키지 안에 `main` 함수를 정의해야 합니다. 패키지는 Go의 코드들을 그룹으로 묶는 역할을 합니다.
 
-The `func` keyword is how you define a function with a name and a body.
+<!-- The `func` keyword is how you define a function with a name and a body. -->
+`func` 키워드는 함수의 이름과 내용을 정의합니다.
 
 With `import "fmt"` we are importing a package which contains the `Println` function that we use to print.
+`import "fmt"`로 출력을 위한 `Println` 함수를 포함하고 있는 패키지를 가져올 수 있습니다.
 
 ## How to test
 
