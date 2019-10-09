@@ -8,15 +8,20 @@
 <!-- It is traditional for your first program in a new language to be Hello, world. -->
 새로운 프로그래밍 언어에 입문할때는 보통 Hello, world를 먼저 출력해보죠.
 
-In the [previous chapter](install-go.md#go-environment) we discussed how Go is opinionated as to where you put your files.
+<!-- In the [previous chapter](install-go.md#go-environment) we discussed how Go is opinionated as to where you put your files. -->
+[이전 챕터](install-go.md#go-environment)에서 우리는 Go를 사용할때 파일을 어떻게 정리해야 하는지 봤습니다.
 
-Make a directory in the following path `$GOPATH/src/github.com/{your-user-id}/hello`.
+<!-- Make a directory in the following path `$GOPATH/src/github.com/{your-user-id}/hello`. -->
+`$GOPATH/src/github.com/{your-user-id}/hello` 에 디렉토리를 만듭니다.
 
-So if you're on a unix based OS and your username is "bob" and you are happy to stick with Go's conventions about `$GOPATH` (which is the easiest way of setting up) you could run `mkdir -p $GOPATH/src/github.com/bob/hello`.
+<!-- So if you're on a unix based OS and your username is "bob" and you are happy to stick with Go's conventions about `$GOPATH` (which is the easiest way of setting up) you could run `mkdir -p $GOPATH/src/github.com/bob/hello`. -->
+유닉스 계열 OS를 사용하고 있고, 유저이름이 "bob"이라면 `$GOPATH`를 사용해서 `mkdir -p $GOPATH/src/github.com/bob/hello`로 편리하게 디렉토리를 생성할 수 있습니다.
 
-For subsequent chapters, you can make a new folder with whatever name you like to put the code in e.g `$GOPATH/src/github.com/{your-user-id}/integers` for the next chapter might be sensible. Some readers of this book like to make an enclosing folder for all the work such as "learn-go-with-tests/hello". In short, it's up to you how you structure your folders.
+<!-- For subsequent chapters, you can make a new folder with whatever name you like to put the code in e.g `$GOPATH/src/github.com/{your-user-id}/integers` for the next chapter might be sensible. Some readers of this book like to make an enclosing folder for all the work such as "learn-go-with-tests/hello". In short, it's up to you how you structure your folders. -->
+이 챕터 이후로는 각각에 별도의 이름을 붙여서 디렉토리를 만드는 것을 권장합니다. 다음 챕터를 예시로 들면 `면GOPATH/src/github.com/{your-user-id}/integers`와 같은 형식이 될 수 있습니다. 어떤 유저들은 모든 파일을 "lear을-go-with-tests/hello" 안에 넣기도 합니다. 결론적으로 어떻게 하는지는 여러분이 결정하시면 됩니다.
 
-Create a file in this directory called `hello.go` and write this code. To run it type `go run hello.go`.
+<!-- Create a file in this directory called `hello.go` and write this code. To run it type `go run hello.go`. -->
+생성한 디렉토리에 `hello.go` 파일을 생성하고 아래의 코드를 씁니다. 실행시키기 위해서는 `go run hello.go` 커맨드를 입력합니다.
 
 ```go
 package main
@@ -28,19 +33,26 @@ func main() {
 }
 ```
 
-## How it works
+<!-- ## How it works -->
+## 동작 원리
 
-When you write a program in Go you will have a `main` package defined with a `main` func inside it. Packages are ways of grouping up related Go code together.
+<!-- When you write a program in Go you will have a `main` package defined with a `main` func inside it. Packages are ways of grouping up related Go code together. -->
+Go에서 프로그램을 작성할때는 `main` 패키지 안에 `main` 함수를 정의해야 합니다. 패키지는 Go의 코드들을 그룹으로 묶는 역할을 합니다.
 
-The `func` keyword is how you define a function with a name and a body.
+<!-- The `func` keyword is how you define a function with a name and a body. -->
+`func` 키워드는 함수의 이름과 내용을 정의합니다.
 
-With `import "fmt"` we are importing a package which contains the `Println` function that we use to print.
+<!-- With `import "fmt"` we are importing a package which contains the `Println` function that we use to print. -->
+`import "fmt"`로 출력을 위한 `Println` 함수를 포함하고 있는 패키지를 가져올 수 있습니다.
 
-## How to test
+<!-- ## How to test -->
+# 테스트 작성법
 
-How do you test this? It is good to separate your "domain" code from the outside world \(side-effects\). The `fmt.Println` is a side effect \(printing to stdout\) and the string we send in is our domain.
+<!-- How do you test this? It is good to separate your "domain" code from the outside world \(side-effects\). The `fmt.Println` is a side effect \(printing to stdout\) and the string we send in is our domain. -->
+이 코드를 어떻게 테스트 할까요? 보통 코드를 \(부작용\)으로부터 보호하기 위해서 외부와 분리하는 것이 좋습니다. `fmt.Println`는 일종의 부작용으로서 \(stdout에 출력을 합니다\). 여기서 우리가 이 함수에 넘기는 스트링은 저희의 도메인 코드입니다.
 
-So let's separate these concerns so it's easier to test
+<!-- So let's separate these concerns so it's easier to test -->
+그러므로 테스트를 작성하기 위해서는 이 둘을 분리해야 합니다.
 
 ```go
 package main
@@ -56,9 +68,11 @@ func main() {
 }
 ```
 
-We have created a new function again with `func` but this time we've added another keyword `string` in the definition. This means this function returns a `string`.
+<!-- We have created a new function again with `func` but this time we've added another keyword `string` in the definition. This means this function returns a `string`. -->
+`func`키워드로 새 합수를 작성하고 함수의 정의에 `string` 을 보합시켰습니다. 이는 함수가 `strin가`를 반환하는 것을 의미합니다.
 
-Now create a new file called `hello_test.go` where we are going to write a test for our `Hello` function
+<!-- Now create a new file called `hello_test.go` where we are going to write a test for our `Hello` function -->
+`Hello` 함수에 대한 테스트 코드를 작성하기 위해 `hello_test.go`라는 새 파일을 만듭니다.
 
 ```go
 package main
@@ -75,9 +89,11 @@ func TestHello(t *testing.T) {
 }
 ```
 
-Before explaining, let's just run the code. Run `go test` in your terminal. It should've passed! Just to check, try deliberately breaking the test by changing the `want` string.
+<!-- Before explaining, let's just run the code. Run `go test` in your terminal. It should've passed! Just to check, try deliberately breaking the test by changing the `want` string. -->
+설명하기 전에 먼저 코드를 실행시켜 봅시다. `go test`를 터미널에서 실행시킵니다. 통과할 것입니다. 확인 하기 위해서 `want` 스트링을 바꿔서 테스트를 실패시켜 봅시다.
 
-Notice how you have not had to pick between multiple testing frameworks and then figure out how to install. Everything you need is built in to the language and the syntax is the same as the rest of the code you will write.
+<!-- Notice how you have not had to pick between multiple testing frameworks and then figure out how to install. Everything you need is built in to the language and the syntax is the same as the rest of the code you will write. -->
+테스트를 작성하기 위해서 프레임 워크들을 비교하고 골라서 설치할 필요가 없습니다. 필요한 대부분의 기능은 이처럼 언어 안데 거의 포함되어서 신택스의 일관성을 지킬 수 있습니다.
 
 ### Writing tests
 
