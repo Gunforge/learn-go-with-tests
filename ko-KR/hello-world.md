@@ -42,14 +42,17 @@ Go에서 프로그램을 작성할때는 `main` 패키지 안에 `main` 함수�
 <!-- The `func` keyword is how you define a function with a name and a body. -->
 `func` 키워드는 함수의 이름과 내용을 정의합니다.
 
-With `import "fmt"` we are importing a package which contains the `Println` function that we use to print.
+<!-- With `import "fmt"` we are importing a package which contains the `Println` function that we use to print. -->
 `import "fmt"`로 출력을 위한 `Println` 함수를 포함하고 있는 패키지를 가져올 수 있습니다.
 
-## How to test
+<!-- ## How to test -->
+# 테스트 작성법
 
-How do you test this? It is good to separate your "domain" code from the outside world \(side-effects\). The `fmt.Println` is a side effect \(printing to stdout\) and the string we send in is our domain.
+<!-- How do you test this? It is good to separate your "domain" code from the outside world \(side-effects\). The `fmt.Println` is a side effect \(printing to stdout\) and the string we send in is our domain. -->
+이 코드를 어떻게 테스트 할까요? 보통 코드를 \(부작용\)으로부터 보호하기 위해서 외부와 분리하는 것이 좋습니다. `fmt.Println`는 일종의 부작용으로서 \(stdout에 출력을 합니다\). 여기서 우리가 이 함수에 넘기는 스트링은 저희의 도메인 코드입니다.
 
-So let's separate these concerns so it's easier to test
+<!-- So let's separate these concerns so it's easier to test -->
+그러므로 테스트를 작성하기 위해서는 이 둘을 분리해야 합니다.
 
 ```go
 package main
@@ -65,9 +68,11 @@ func main() {
 }
 ```
 
-We have created a new function again with `func` but this time we've added another keyword `string` in the definition. This means this function returns a `string`.
+<!-- We have created a new function again with `func` but this time we've added another keyword `string` in the definition. This means this function returns a `string`. -->
+`func`키워드로 새 합수를 작성하고 함수의 정의에 `string` 을 보합시켰습니다. 이는 함수가 `strin가`를 반환하는 것을 의미합니다.
 
-Now create a new file called `hello_test.go` where we are going to write a test for our `Hello` function
+<!-- Now create a new file called `hello_test.go` where we are going to write a test for our `Hello` function -->
+`Hello` 함수에 대한 테스트 코드를 작성하기 위해 `hello_test.go`라는 새 파일을 만듭니다.
 
 ```go
 package main
@@ -84,9 +89,11 @@ func TestHello(t *testing.T) {
 }
 ```
 
-Before explaining, let's just run the code. Run `go test` in your terminal. It should've passed! Just to check, try deliberately breaking the test by changing the `want` string.
+<!-- Before explaining, let's just run the code. Run `go test` in your terminal. It should've passed! Just to check, try deliberately breaking the test by changing the `want` string. -->
+설명하기 전에 먼저 코드를 실행시켜 봅시다. `go test`를 터미널에서 실행시킵니다. 통과할 것입니다. 확인 하기 위해서 `want` 스트링을 바꿔서 테스트를 실패시켜 봅시다.
 
-Notice how you have not had to pick between multiple testing frameworks and then figure out how to install. Everything you need is built in to the language and the syntax is the same as the rest of the code you will write.
+<!-- Notice how you have not had to pick between multiple testing frameworks and then figure out how to install. Everything you need is built in to the language and the syntax is the same as the rest of the code you will write. -->
+테스트를 작성하기 위해서 프레임 워크들을 비교하고 골라서 설치할 필요가 없습니다. 필요한 대부분의 기능은 이처럼 언어 안데 거의 포함되어서 신택스의 일관성을 지킬 수 있습니다.
 
 ### Writing tests
 
