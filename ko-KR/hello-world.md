@@ -8,15 +8,20 @@
 <!-- It is traditional for your first program in a new language to be Hello, world. -->
 새로운 프로그래밍 언어에 입문할때는 보통 Hello, world를 먼저 출력해보죠.
 
-In the [previous chapter](install-go.md#go-environment) we discussed how Go is opinionated as to where you put your files.
+<!-- In the [previous chapter](install-go.md#go-environment) we discussed how Go is opinionated as to where you put your files. -->
+[이전 챕터](install-go.md#go-environment)에서 우리는 Go를 사용할때 파일을 어떻게 정리해야 하는지 봤습니다.
 
-Make a directory in the following path `$GOPATH/src/github.com/{your-user-id}/hello`.
+<!-- Make a directory in the following path `$GOPATH/src/github.com/{your-user-id}/hello`. -->
+`$GOPATH/src/github.com/{your-user-id}/hello` 에 디렉토리를 만듭니다.
 
-So if you're on a unix based OS and your username is "bob" and you are happy to stick with Go's conventions about `$GOPATH` (which is the easiest way of setting up) you could run `mkdir -p $GOPATH/src/github.com/bob/hello`.
+<!-- So if you're on a unix based OS and your username is "bob" and you are happy to stick with Go's conventions about `$GOPATH` (which is the easiest way of setting up) you could run `mkdir -p $GOPATH/src/github.com/bob/hello`. -->
+유닉스 계열 OS를 사용하고 있고, 유저이름이 "bob"이라면 `$GOPATH`를 사용해서 `mkdir -p $GOPATH/src/github.com/bob/hello`로 편리하게 디렉토리를 생성할 수 있습니다.
 
-For subsequent chapters, you can make a new folder with whatever name you like to put the code in e.g `$GOPATH/src/github.com/{your-user-id}/integers` for the next chapter might be sensible. Some readers of this book like to make an enclosing folder for all the work such as "learn-go-with-tests/hello". In short, it's up to you how you structure your folders.
+<!-- For subsequent chapters, you can make a new folder with whatever name you like to put the code in e.g `$GOPATH/src/github.com/{your-user-id}/integers` for the next chapter might be sensible. Some readers of this book like to make an enclosing folder for all the work such as "learn-go-with-tests/hello". In short, it's up to you how you structure your folders. -->
+이 챕터 이후로는 각각에 별도의 이름을 붙여서 디렉토리를 만드는 것을 권장합니다. 다음 챕터를 예시로 들면 `면GOPATH/src/github.com/{your-user-id}/integers`와 같은 형식이 될 수 있습니다. 어떤 유저들은 모든 파일을 "lear을-go-with-tests/hello" 안에 넣기도 합니다. 결론적으로 어떻게 하는지는 여러분이 결정하시면 됩니다.
 
-Create a file in this directory called `hello.go` and write this code. To run it type `go run hello.go`.
+<!-- Create a file in this directory called `hello.go` and write this code. To run it type `go run hello.go`. -->
+생성한 디렉토리에 `hello.go` 파일을 생성하고 아래의 코드를 씁니다. 실행시키기 위해서는 `go run hello.go` 커맨드를 입력합니다.
 
 ```go
 package main
