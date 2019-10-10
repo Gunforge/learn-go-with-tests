@@ -114,14 +114,16 @@ func TestHello(t *testing.T) {
 <!-- We've covered some new topics: -->
 우리는 여기서 몇가지 새로운 것들을 사용했습니다: 
 
+<!-- #### `if` -->
 #### `if`
-#### `if`
-If statements in Go are very much like other programming languages.
+<!-- If statements in Go are very much like other programming languages. -->
 if문은 Go에서도 다른 프로그래밍 언어들과 같은 의미를 가집니다.
 
-#### Declaring variables
+<!-- #### Declaring variables -->
+#### 변수 선언
 
-We're declaring some variables with the syntax `varName := value`, which lets us re-use some values in our test for readability.
+<!-- We're declaring some variables with the syntax `varName := value`, which lets us re-use some values in our test for readability. -->
+`varName := vale`라는 새로운 신텍스를 사용해서 변수를 선언했습니다. 이는 값들을 재이용 함으로서 테스트의 가독성을 높입니다.
 
 #### `t.Errorf`
 
