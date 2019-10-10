@@ -125,13 +125,17 @@ if문은 Go에서도 다른 프로그래밍 언어들과 같은 의미를 가집
 <!-- We're declaring some variables with the syntax `varName := value`, which lets us re-use some values in our test for readability. -->
 `varName := vale`라는 새로운 신텍스를 사용해서 변수를 선언했습니다. 이는 값들을 재이용 함으로서 테스트의 가독성을 높입니다.
 
+<!-- #### `t.Errorf` -->
 #### `t.Errorf`
 
-We are calling the `Errorf` _method_ on our `t` which will print out a message and fail the test. The `f` stands for format which allows us to build a string with values inserted into the placeholder values `%q`. When you made the test fail it should be clear how it works.
+<!-- We are calling the `Errorf` _method_ on our `t` which will print out a message and fail the test. The `f` stands for format which allows us to build a string with values inserted into the placeholder values `%q`. When you made the test fail it should be clear how it works. -->
+메시지를 출력하고 테스트를 실패시키기 위해서 `t`의 `Error의` _메소드_ 를 호출 했습니다. `f`는 `%q`를 사용해서 값들을 스트링 안에 하드 코드하는 것을 방지하는 포멧을 의미합니다. 테스트가 실패했을때 이 메소드의 의미는 분명해집니다. 
 
-You can read more about the placeholder strings in the [fmt go doc](https://golang.org/pkg/fmt/#hdr-Printing). For tests `%q` is very useful as it wraps your values in double quotes.
+<!-- You can read more about the placeholder strings in the [fmt go doc](https://golang.org/pkg/fmt/#hdr-Printing). For tests `%q` is very useful as it wraps your values in double quotes. -->
+[fmt go doc](https://golang.org/pkg/fmt/#hdr-Printing)에서 스트링에 대해서 더 읽을 수 있습니다. 테스트에서는 쌍따옴표안에 있는 값들을 표현하는 `%q`가 유용합니다.
 
-We will later explore the difference between methods and functions.
+<!-- We will later explore the difference between methods and functions. -->
+나중에는 메소드와 함수의 차이에 대해서 이야기 할 것입니다.
 
 ### Go doc
 
