@@ -95,17 +95,24 @@ func TestHello(t *testing.T) {
 <!-- Notice how you have not had to pick between multiple testing frameworks and then figure out how to install. Everything you need is built in to the language and the syntax is the same as the rest of the code you will write. -->
 테스트를 작성하기 위해서 프레임 워크들을 비교하고 골라서 설치할 필요가 없습니다. 필요한 대부분의 기능은 이처럼 언어 안데 거의 포함되어서 신택스의 일관성을 지킬 수 있습니다.
 
-### Writing tests
+<!-- ### Writing tests -->
+### 테스트 쓰기
 
-Writing a test is just like writing a function, with a few rules
+<!-- Writing a test is just like writing a function, with a few rules -->
+몇가지 규칙을 준수해야 한다는 점을 제외하면 테스트를 작성하는 것은 일반적인 함수를 작성하는 것과다동일합니다
 
-* It needs to be in a file with a name like `xxx_test.go`
-* The test function must start with the word `Test`
-* The test function takes one argument only `t *testing.T`
+<!-- * It needs to be in a file with a name like `xxx_test.go` -->
+* 파일네임은 `xxx_test.go`와 같은 형식이어야 합니다.
+<!-- * The test function must start with the word `Test` -->
+* 테스트 함수는 반드시 `Test`로 시작해야 합니다.
+<!-- * The test function takes one argument only `t *testing.T` -->
+* 테스트 함수는 반드시 인자로서 `t *testing.T` 하나만 받아야 합니다.
 
-For now it's enough to know that your `t` of type `*testing.T` is your "hook" into the testing framework so you can do things like `t.Fail()` when you want to fail.
+<!-- For now it's enough to know that your `t` of type `*testing.T` is your "hook" into the testing framework so you can do things like `t.Fail()` when you want to fail. -->
+현시점으로서는 `*testing.T` 타입의 `t`가 `t.Fail()`와 같이 테스트 프레임 워크를 사용하는 "훅"이라고 이해하시면 됩니다.
 
-We've covered some new topics:
+<!-- We've covered some new topics: -->
+우리는 여기서 몇가지 새로운 것들을 사용했습니다: 
 
 #### `if`
 If statements in Go are very much like other programming languages.
