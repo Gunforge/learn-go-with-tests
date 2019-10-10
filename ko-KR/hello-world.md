@@ -95,48 +95,71 @@ func TestHello(t *testing.T) {
 <!-- Notice how you have not had to pick between multiple testing frameworks and then figure out how to install. Everything you need is built in to the language and the syntax is the same as the rest of the code you will write. -->
 테스트를 작성하기 위해서 프레임 워크들을 비교하고 골라서 설치할 필요가 없습니다. 필요한 대부분의 기능은 이처럼 언어 안데 거의 포함되어서 신택스의 일관성을 지킬 수 있습니다.
 
-### Writing tests
+<!-- ### Writing tests -->
+### 테스트 쓰기
 
-Writing a test is just like writing a function, with a few rules
+<!-- Writing a test is just like writing a function, with a few rules -->
+몇가지 규칙을 준수해야 한다는 점을 제외하면 테스트를 작성하는 것은 일반적인 함수를 작성하는 것과다동일합니다
 
-* It needs to be in a file with a name like `xxx_test.go`
-* The test function must start with the word `Test`
-* The test function takes one argument only `t *testing.T`
+<!-- * It needs to be in a file with a name like `xxx_test.go` -->
+* 파일네임은 `xxx_test.go`와 같은 형식이어야 합니다.
+<!-- * The test function must start with the word `Test` -->
+* 테스트 함수는 반드시 `Test`로 시작해야 합니다.
+<!-- * The test function takes one argument only `t *testing.T` -->
+* 테스트 함수는 반드시 인자로서 `t *testing.T` 하나만 받아야 합니다.
 
-For now it's enough to know that your `t` of type `*testing.T` is your "hook" into the testing framework so you can do things like `t.Fail()` when you want to fail.
+<!-- For now it's enough to know that your `t` of type `*testing.T` is your "hook" into the testing framework so you can do things like `t.Fail()` when you want to fail. -->
+현시점으로서는 `*testing.T` 타입의 `t`가 `t.Fail()`와 같이 테스트 프레임 워크를 사용하는 "훅"이라고 이해하시면 됩니다.
 
-We've covered some new topics:
+<!-- We've covered some new topics: -->
+우리는 여기서 몇가지 새로운 것들을 사용했습니다: 
 
+<!-- #### `if` -->
 #### `if`
-If statements in Go are very much like other programming languages.
+<!-- If statements in Go are very much like other programming languages. -->
+if문은 Go에서도 다른 프로그래밍 언어들과 같은 의미를 가집니다.
 
-#### Declaring variables
+<!-- #### Declaring variables -->
+#### 변수 선언
 
-We're declaring some variables with the syntax `varName := value`, which lets us re-use some values in our test for readability.
+<!-- We're declaring some variables with the syntax `varName := value`, which lets us re-use some values in our test for readability. -->
+`varName := vale`라는 새로운 신텍스를 사용해서 변수를 선언했습니다. 이는 값들을 재이용 함으로서 테스트의 가독성을 높입니다.
 
+<!-- #### `t.Errorf` -->
 #### `t.Errorf`
 
-We are calling the `Errorf` _method_ on our `t` which will print out a message and fail the test. The `f` stands for format which allows us to build a string with values inserted into the placeholder values `%q`. When you made the test fail it should be clear how it works.
+<!-- We are calling the `Errorf` _method_ on our `t` which will print out a message and fail the test. The `f` stands for format which allows us to build a string with values inserted into the placeholder values `%q`. When you made the test fail it should be clear how it works. -->
+메시지를 출력하고 테스트를 실패시키기 위해서 `t`의 `Error의` _메소드_ 를 호출 했습니다. `f`는 `%q`를 사용해서 값들을 스트링 안에 하드 코드하는 것을 방지하는 포멧을 의미합니다. 테스트가 실패했을때 이 메소드의 의미는 분명해집니다. 
 
-You can read more about the placeholder strings in the [fmt go doc](https://golang.org/pkg/fmt/#hdr-Printing). For tests `%q` is very useful as it wraps your values in double quotes.
+<!-- You can read more about the placeholder strings in the [fmt go doc](https://golang.org/pkg/fmt/#hdr-Printing). For tests `%q` is very useful as it wraps your values in double quotes. -->
+[fmt go doc](https://golang.org/pkg/fmt/#hdr-Printing)에서 스트링에 대해서 더 읽을 수 있습니다. 테스트에서는 쌍따옴표안에 있는 값들을 표현하는 `%q`가 유용합니다.
 
-We will later explore the difference between methods and functions.
+<!-- We will later explore the difference between methods and functions. -->
+나중에는 메소드와 함수의 차이에 대해서 이야기 할 것입니다.
 
-### Go doc
+<!-- ### Go doc -->
+### Go 도큐먼트
 
-Another quality of life feature of Go is the documentation. You can launch the docs locally by running `godoc -http :8000`. If you go to [localhost:8000/pkg](http://localhost:8000/pkg) you will see all the packages installed on your system.
+<!-- Another quality of life feature of Go is the documentation. You can launch the docs locally by running `godoc -http :8000`. If you go to [localhost:8000/pkg](http://localhost:8000/pkg) you will see all the packages installed on your system. -->
+Go에서 유용한 또다른 기능은 도큐먼트 입니트. `godoc -http :8000`을 실행시키는 것으로 도큐먼트를 로컬에서 실행시킬 수 있습니다. [localhost:8000/pkg](http://localhost:8000/pkg)에 들어가면 여러분의 시스템에 설치된 패키지들을 확인 할 수 있습니다.
 
-The vast majority of the standard library has excellent documentation with examples. Navigating to [http://localhost:8000/pkg/testing/](http://localhost:8000/pkg/testing/) would be worthwhile to see what's available to you.
+<!-- The vast majority of the standard library has excellent documentation with examples. Navigating to [http://localhost:8000/pkg/testing/](http://localhost:8000/pkg/testing/) would be worthwhile to see what's available to you. -->
+표준 라이브러리 대부분은 좋은 예제를 포함한 도큐먼트를 포함하고 있습니다. [http://localhost:8000/pkg/testing/](http://localhost:8000/pkg/testing/)에 들어가면 테스트 프레임워크에서 어떤 것들이 가능한지 확인 할 수 있습니다.
 
+<!-- ### Hello, YOU -->
 ### Hello, YOU
 
-Now that we have a test we can iterate on our software safely.
+<!-- Now that we have a test we can iterate on our software safely. -->
+이제 우리는 프로그램을 대상으로 안전하게 실행가능한 테스트를 가지고 있습니다.
 
-In the last example we wrote the test _after_ the code had been written just so you could get an example of how to write a test and declare a function. From this point on we will be _writing tests first_.
+<!-- In the last example we wrote the test _after_ the code had been written just so you could get an example of how to write a test and declare a function. From this point on we will be _writing tests first_. -->
+마지막 예시에서 우리는 테스트를 어떻게 작성하고 함수를 어떻게 선언하는지 보기 위해 테스트를 코드를 작성한 _다음에_ 정의했습니다. 지금부터는 _테스트를 먼저_ 정의할 것입니다. 
 
-Our next requirement is to let us specify the recipient of the greeting.
+<!-- Our next requirement is to let us specify the recipient of the greeting. -->
+다음 요구사항은 인사를 하는 대상을 특정하는 것입니다.
 
-Let's start by capturing these requirements in a test. This is basic test driven development and allows us to make sure our test is _actually_ testing what we want. When you retrospectively write tests there is the risk that your test may continue to pass even if the code doesn't work as intended.
+<!-- Let's start by capturing these requirements in a test. This is basic test driven development and allows us to make sure our test is _actually_ testing what we want. When you retrospectively write tests there is the risk that your test may continue to pass even if the code doesn't work as intended. -->
+이 요구사항을 테스트에 반영하는 것에서 시작합니다. 이는 테스트가 _실제로_ 우리가 원하는 사항을 테스트 하도록하는 테스트 주도 개발의 기본 방식입니다. 코드를 작성한 뒤에 테스트를 작성하면, 의도와는 다른 기능을 테스트 할 위험이 있습니다.
 
 ```go
 package main
@@ -153,7 +176,8 @@ func TestHello(t *testing.T) {
 }
 ```
 
-Now run `go test`, you should have a compilation error
+<!-- Now run `go test`, you should have a compilation error -->
+이제 `go test`를 실행하면, 다음과 같은 컴파일 에러가 발생할 것입니다.
 
 ```text
 ./hello_test.go:6:18: too many arguments in call to Hello
@@ -161,11 +185,14 @@ Now run `go test`, you should have a compilation error
     want ()
 ```
 
-When using a statically typed language like Go it is important to _listen to the compiler_. The compiler understands how your code should snap together and work so you don't have to.
+<!-- When using a statically typed language like Go it is important to _listen to the compiler_. The compiler understands how your code should snap together and work so you don't have to. -->
+Go와 같은 정적 타입 언어를 사용할 때는 _컴파일러의 출력을 예의주시_ 하는 것이 중요합니다. 컴파일러는 코드가 어떻게 연결되어야 하는지 이해해서 여러분이 그 작어블 하지 않아도 괜찮게 해 줍니다.
 
-In this case the compiler is telling you what you need to do to continue. We have to change our function `Hello` to accept an argument.
+<!-- In this case the compiler is telling you what you need to do to continue. We have to change our function `Hello` to accept an argument. -->
+이 경우에 컴파일러는 계속하기 위해서는 무엇을 해야 하는지 알려주고 있습니다. `Hello` 함수가 인수를 받도록 수정해야 합니다.
 
-Edit the `Hello` function to accept an argument of type string
+<!-- Edit the `Hello` function to accept an argument of type string -->
+`Hello` 함수를 수정해서 스트링 타입의 인수를 받도록 만듭니다
 
 ```go
 func Hello(name string) string {
@@ -173,7 +200,8 @@ func Hello(name string) string {
 }
 ```
 
-If you try and run your tests again your `main.go` will fail to compile because you're not passing an argument. Send in "world" to make it pass.
+<!-- If you try and run your tests again your `main.go` will fail to compile because you're not passing an argument. Send in "world" to make it pass. -->
+다시 테스트를 실행시키면 파라미터를 건네지 않았기 때문에 `main.go`에서 컴파일이 실패합니다. "world"를 파라미터로 보내서 테스트가 통과하도록 만듭니다.
 
 ```go
 func main() {
@@ -181,15 +209,18 @@ func main() {
 }
 ```
 
-Now when you run your tests you should see something like
+<!-- Now when you run your tests you should see something like -->
+다시 테스트를 실행시키면 다음과 같은 문장이 출력될 겁니다.
 
 ```text
 hello_test.go:10: got 'Hello, world' want 'Hello, Chris''
 ```
 
-We finally have a compiling program but it is not meeting our requirements according to the test.
+<!-- We finally have a compiling program but it is not meeting our requirements according to the test. -->
+컴파일에는 성공했지만, 테스트에 따르면 프로그램의 동작이 요구사항에 맞춰져 있지 않습니다.
 
-Let's make the test pass by using the name argument and concatenate it with `Hello,`
+<!-- Let's make the test pass by using the name argument and concatenate it with `Hello,` -->
+name 인수를 `Hello,`와 연결해서 테스트를 통과하게 만듭니다.
 
 ```go
 func Hello(name string) string {
@@ -197,7 +228,8 @@ func Hello(name string) string {
 }
 ```
 
-When you run the tests they should now pass. Normally as part of the TDD cycle we should now _refactor_.
+<!-- When you run the tests they should now pass. Normally as part of the TDD cycle we should now _refactor_. -->
+이제 테스트를 실행시키면 통과 할 것입니다. 테스트 주도 개발(이하 TDD)의 사이클에 따라서 다음에 해야할 일은 _리팩토링_ 입니다.
 
 ### A note on source control
 
