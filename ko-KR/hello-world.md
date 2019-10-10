@@ -115,7 +115,9 @@ func TestHello(t *testing.T) {
 우리는 여기서 몇가지 새로운 것들을 사용했습니다: 
 
 #### `if`
+#### `if`
 If statements in Go are very much like other programming languages.
+if문은 Go에서도 다른 프로그래밍 언어들과 같은 의미를 가집니다.
 
 #### Declaring variables
 
