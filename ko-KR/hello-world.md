@@ -137,11 +137,14 @@ if문은 Go에서도 다른 프로그래밍 언어들과 같은 의미를 가집
 <!-- We will later explore the difference between methods and functions. -->
 나중에는 메소드와 함수의 차이에 대해서 이야기 할 것입니다.
 
-### Go doc
+<!-- ### Go doc -->
+### Go 도큐먼트
 
-Another quality of life feature of Go is the documentation. You can launch the docs locally by running `godoc -http :8000`. If you go to [localhost:8000/pkg](http://localhost:8000/pkg) you will see all the packages installed on your system.
+<!-- Another quality of life feature of Go is the documentation. You can launch the docs locally by running `godoc -http :8000`. If you go to [localhost:8000/pkg](http://localhost:8000/pkg) you will see all the packages installed on your system. -->
+Go에서 유용한 또다른 기능은 도큐먼트 입니트. `godoc -http :8000`을 실행시키는 것으로 도큐먼트를 로컬에서 실행시킬 수 있습니다. [localhost:8000/pkg](http://localhost:8000/pkg)에 들어가면 여러분의 시스템에 설치된 패키지들을 확인 할 수 있습니다.
 
-The vast majority of the standard library has excellent documentation with examples. Navigating to [http://localhost:8000/pkg/testing/](http://localhost:8000/pkg/testing/) would be worthwhile to see what's available to you.
+<!-- The vast majority of the standard library has excellent documentation with examples. Navigating to [http://localhost:8000/pkg/testing/](http://localhost:8000/pkg/testing/) would be worthwhile to see what's available to you. -->
+표준 라이브러리 대부분은 좋은 예제를 포함한 도큐먼트를 포함하고 있습니다. [http://localhost:8000/pkg/testing/](http://localhost:8000/pkg/testing/)에 들어가면 테스트 프레임워크에서 어떤 것들이 가능한지 확인 할 수 있습니다.
 
 ### Hello, YOU
 
