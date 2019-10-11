@@ -231,15 +231,21 @@ func Hello(name string) string {
 <!-- When you run the tests they should now pass. Normally as part of the TDD cycle we should now _refactor_. -->
 이제 테스트를 실행시키면 통과 할 것입니다. 테스트 주도 개발(이하 TDD)의 사이클에 따라서 다음에 해야할 일은 _리팩토링_ 입니다.
 
-### A note on source control
+<!-- ### A note on source control -->
+### 소스 컨트롤
 
-At this point, if you are using source control \(which you should!\) I would
-`commit` the code as it is. We have working software backed by a test.
+<!-- At this point, if you are using source control \(which you should!\) I would -->
+<!-- `commit` the code as it is. We have working software backed by a test. -->
+소스 컨트롤을 사용하고 있다면 (\(사용해야만 합니다\)) 지금까지 작성한 코드를 `커밋`합니다.
+현재 우리는 테스트로 검증된 동작하는 코드를 가지고 있습니다.
 
-I _wouldn't_ push to master though, because I plan to refactor next. It is nice
-to commit at this point in case you somehow get into a mess with refactoring - you can always go back to the working version.
+<!-- I _wouldn't_ push to master though, because I plan to refactor next. It is nice -->
+<!-- to commit at this point in case you somehow get into a mess with refactoring - you can always go back to the working version. -->
+하지만 리팩토링을 하지 않았기 때문에, 아직은 마스터 브랜치에 푸시하지 _않습니다_.
+혹시 프로그램이 동작하지 않게 됐을때 되돌릴 수 있는 곳을 만들기 때문에 리팩토링 이전에 커밋하는 것을 추천합니다.
 
 There's not a lot to refactor here, but we can introduce another language feature _constants_.
+아직 리팩토링 할 것이 많지는 않지만, 언어의 새로운 기능인 _상수_ 를 소개합니다.
 
 ### Constants
 
