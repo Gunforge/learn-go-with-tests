@@ -277,11 +277,14 @@ func Hello(name string) string {
 <!-- To be clear, the performance boost is incredibly negligible for this example! But it's worth thinking about creating constants to capture the meaning of values and sometimes to aid performance. -->
 이 예제에서의 성능 향상은 거의 없습니다. 하지만 성능 이외에도 어떤 값에 이름을 붙이는 것은 프로그램의 가독성을 높이기 때문에 추천되는 일입니다.
 
-## Hello, world... again
+<!-- ## Hello, world... again -->
+## 다시 Hello, world
 
-The next requirement is when our function is called with an empty string it defaults to printing "Hello, World", rather than "Hello, ".
+<!-- The next requirement is when our function is called with an empty string it defaults to printing "Hello, World", rather than "Hello, ". -->
+프로그램의 다음 요구사항은 우리의 함수가 인수 없이 호출되었을 때 "Hello, "대신 "Hello, World"가 출럭되게 하는 것입니다.
 
-Start by writing a new failing test
+<!-- Start by writing a new failing test -->
+실패하는 테스트를 작성하는 것에서 시작합니다.
 
 ```go
 func TestHello(t *testing.T) {
@@ -307,17 +310,23 @@ func TestHello(t *testing.T) {
 }
 ```
 
-Here we are introducing another tool in our testing arsenal, subtests. Sometimes it is useful to group tests around a "thing" and then have subtests describing different scenarios.
+<!-- Here we are introducing another tool in our testing arsenal, subtests. Sometimes it is useful to group tests around a "thing" and then have subtests describing different scenarios. -->
+여기서 우리는 subtests라는 새로운 테스팅 툴을 사용 했습니다. 상황에 따라서 테스트를 어떤 '그룹'으로 묶어서 다른 시나리오들을 테스트하는 서브테스트를 작성하는 것은 매우 유용합니다.
 
-A benefit of this approach is you can set up shared code that can be used in the other tests.
+<!-- A benefit of this approach is you can set up shared code that can be used in the other tests. -->
+그 장점중 하나는, 중복되는 부분의 코드를 다른 테스트에서도 사용할 수 있다는 점입니다.
 
-There is repeated code when we check if the message is what we expect.
+<!-- There is repeated code when we check if the message is what we expect. -->
+이 코드에서는 메시지가 예상한 값과 같은지 확인하는 부분이 중복되어 있습니다.
 
-Refactoring is not _just_ for the production code!
+<!-- Refactoring is not _just_ for the production code! -->
+리팩토링은 프로덕션 코드 _만_ 을 위한건 아니라는 것에 주의합니다.
 
-It is important that your tests _are clear specifications_ of what the code needs to do.
+<!-- It is important that your tests _are clear specifications_ of what the code needs to do. -->
+테스트는 여러분이 하려고 하는 사항에 대한 _명확한 정의_ 여야 한다는 점에도 주의합니다. 
 
-We can and should refactor our tests.
+<!-- We can and should refactor our tests. -->
+그러므로 우리는 테스트를 리팩토링 해야합니다.
 
 ```go
 func TestHello(t *testing.T) {
@@ -344,13 +353,17 @@ func TestHello(t *testing.T) {
 }
 ```
 
-What have we done here?
+<!-- What have we done here? -->
+여기서 무엇을 한 걸까요?
 
-We've refactored our assertion into a function. This reduces duplication and improves readability of our tests. In Go you can declare functions inside other functions and assign them to variables. You can then call them, just like normal functions. We need to pass in `t *testing.T` so that we can tell the test code to fail when we need to.
+<!-- We've refactored our assertion into a function. This reduces duplication and improves readability of our tests. In Go you can declare functions inside other functions and assign them to variables. You can then call them, just like normal functions. We need to pass in `t *testing.T` so that we can tell the test code to fail when we need to. -->
+우리는 assertion들을 함수로 만듦으로서 리팩토링을 했습니다. 이는 중독을 줄여서 코드의 가독성을 높입니다. Go에서는 함수를 함수안에서 정의하고 변수 안에 대입하는 것도 가능합니다. 이렇게 대입된 함수는 다른 함수와 같은 방식으로 호출 할 수 있습니다. 테스트 조건에 실패했을 때 실패했다는 것을 알려주기 위해서 `t *testing.T`도 건냅니다.
 
-`t.Helper()` is needed to tell the test suite that this method is a helper. By doing this when it fails the line number reported will be in our _function call_ rather than inside our test helper. This will help other developers track down problems easier. If you still don't understand, comment it out, make a test fail and observe the test output.
+<!-- `t.Helper()` is needed to tell the test suite that this method is a helper. By doing this when it fails the line number reported will be in our _function call_ rather than inside our test helper. This will help other developers track down problems easier. If you still don't understand, comment it out, make a test fail and observe the test output. -->
+`t.Helper()`는 이 함수가 헬퍼 함수라는 것을 알리기 위해서 필요합니다. 이렇게 함으로서 테스트가 실패했을때 헬퍼 함수 안이 아니라 어떤 테스트가 실패했는지 제대로 출력할 수 있습니다. 이는 팀의 다른 개발자들이 에러를 더 빨리 발견할 수 있게 해줍니다. 아직 잘 모르겠다면, 테스트를 실패시켜봐서 어떻게 출력되는지 확인해 봅니다.
 
-Now that we have a well-written failing test, let's fix the code, using an `if`.
+<!-- Now that we have a well-written failing test, let's fix the code, using an `if`. -->
+이제 우리는 잘 짜인 실패하는 테스트를 가지고 있습니다, 이제 `if`를 사용해서 코드를 고칩니다.
 
 ```go
 const englishHelloPrefix = "Hello, "
@@ -363,7 +376,8 @@ func Hello(name string) string {
 }
 ```
 
-If we run our tests we should see it satisfies the new requirement and we haven't accidentally broken the other functionality.
+<!-- If we run our tests we should see it satisfies the new requirement and we haven't accidentally broken the other functionality. -->
+이제 테스트를 실행하면 우리는 새로운 요구사항을 구현했다는 사실과 동시에 다른 기능을 부수지 않았다는 것을 확인할 수 있습니다.
 
 ### Back to source control
 
