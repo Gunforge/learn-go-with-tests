@@ -247,15 +247,18 @@ func Hello(name string) string {
 There's not a lot to refactor here, but we can introduce another language feature _constants_.
 아직 리팩토링 할 것이 많지는 않지만, 언어의 새로운 기능인 _상수_ 를 소개합니다.
 
-### Constants
+<!-- ### Constants -->
+### 상수
 
-Constants are defined like so
+<!-- Constants are defined like so -->
+상수는 아래와 같이 정의 됩니다.
 
 ```go
 const englishHelloPrefix = "Hello, "
 ```
 
-We can now refactor our code
+<!-- We can now refactor our code -->
+이제 우리는 코드를 아래처럼 리팩토링 할 수 있습니다.
 
 ```go
 const englishHelloPrefix = "Hello, "
@@ -265,11 +268,14 @@ func Hello(name string) string {
 }
 ```
 
-After refactoring, re-run your tests to make sure you haven't broken anything.
+<!-- After refactoring, re-run your tests to make sure you haven't broken anything. -->
+리팩토링을 한 다음에는 테스트를 실행시켜서 프로그램이 제대로 동작하는지 확인합니다.
 
-Constants should improve performance of your application as it saves you creating the `"Hello, "` string instance every time `Hello` is called.
+<!-- Constants should improve performance of your application as it saves you creating the `"Hello, "` string instance every time `Hello` is called. -->
+상수는 `Hello`함수가 호출될 때마나 `"Hello, "`인스턴스가 생성되는 것을 방지하기 때문에 프로그램의 성능을 향상시킵니다.
 
-To be clear, the performance boost is incredibly negligible for this example! But it's worth thinking about creating constants to capture the meaning of values and sometimes to aid performance.
+<!-- To be clear, the performance boost is incredibly negligible for this example! But it's worth thinking about creating constants to capture the meaning of values and sometimes to aid performance. -->
+이 예제에서의 성능 향상은 거의 없습니다. 하지만 성능 이외에도 어떤 값에 이름을 붙이는 것은 프로그램의 가독성을 높이기 때문에 추천되는 일입니다.
 
 ## Hello, world... again
 
