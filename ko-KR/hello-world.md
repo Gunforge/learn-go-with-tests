@@ -379,10 +379,12 @@ func Hello(name string) string {
 <!-- If we run our tests we should see it satisfies the new requirement and we haven't accidentally broken the other functionality. -->
 이제 테스트를 실행하면 우리는 새로운 요구사항을 구현했다는 사실과 동시에 다른 기능을 부수지 않았다는 것을 확인할 수 있습니다.
 
-### Back to source control
+<!-- ### Back to source control -->
+### 다시 소스 컨트롤
 
-Now we are happy with the code I would amend the previous commit so we only
-check in the lovely version of our code with its test.
+<!-- Now we are happy with the code I would amend the previous commit so we only -->
+<!-- check in the lovely version of our code with its test. -->
+코드에 문제가 없기 때문에 이전에 한 커밋을 그대로 둔채로 지금 상태를 커밋합니다.
 
 ### Discipline
 
