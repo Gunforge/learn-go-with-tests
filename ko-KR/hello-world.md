@@ -516,13 +516,18 @@ func Hello(name string, language string) string {
 }
 ```
 
-### French
+<!-- ### French -->
+### 프랑스어
 
-* Write a test asserting that if you pass in `"French"` you get `"Bonjour, "`
-* See it fail, check the error message is easy to read
-* Do the smallest reasonable change in the code
+<!-- * Write a test asserting that if you pass in `"French"` you get `"Bonjour, "` -->
+* `"French"`를 건네면 `"Bonjour, "`를 리턴하는지 확인하는 테스트 작성하기
+<!-- * See it fail, check the error message is easy to read -->
+* 실패하는지 확인하고, 에러 메시지를 확인하기
+<!-- * Do the smallest reasonable change in the code -->
+* 최소한의 변경으로 테스트를 통과시키기
 
-You may have written something that looks roughly like this
+<!-- You may have written something that looks roughly like this -->
+여러분은 아래와 같이 코드를 썼을 겁니다.
 
 ```go
 func Hello(name string, language string) string {
