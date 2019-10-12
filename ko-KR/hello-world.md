@@ -642,12 +642,18 @@ func greetingPrefix(language string) (prefix string) {
 <!-- * Declaring variables and constants -->
 * 변수, 상수 선언
 
-### The TDD process and _why_ the steps are important
+<!-- ### The TDD process and _why_ the steps are important -->
+### _왜_ TDD 프로세스가 중요한가?
 
-* _Write a failing test and see it fail_ so we know we have written a _relevant_ test for our requirements and seen that it produces an _easy to understand description of the failure_
-* Writing the smallest amount of code to make it pass so we know we have working software
-* _Then_ refactor, backed with the safety of our tests to ensure we have well-crafted code that is easy to work with
+<!-- * _Write a failing test and see it fail_ so we know we have written a _relevant_ test for our requirements and seen that it produces an _easy to understand description of the failure_ -->
+* _실패하는 테스트를 작성하고 실패하는지 확인하는 것_ 은 요구사항과 _관련성 있는_ 테스트를 작성하고 _실패에 대한 정보_ 를 얻을 수 있게 해줍니다.
+<!-- * Writing the smallest amount of code to make it pass so we know we have working software -->
+* 테스트를 통과시키기 위한 최소한의 코드를 작성해서 프로그램이 동작하는지 확인합니다.
+<!-- * _Then_ refactor, backed with the safety of our tests to ensure we have well-crafted code that is easy to work with -->
+* 테스트로 보호 받으면서 리팩토링을 해서 코드의 가독성과 확장성을 높입니다.
 
-In our case we've gone from `Hello()` to `Hello("name")`, to `Hello("name", "French")` in small, easy to understand steps.
+<!-- In our case we've gone from `Hello()` to `Hello("name")`, to `Hello("name", "French")` in small, easy to understand steps. -->
+이 경우에 우리는 `Hello()`에서 `Hello("name")`으로, 다시 `Hello("name", "French")`로 작고, 이해하기 쉬운 테스트를 작성해 가며 코드를 변경했습니다.
 
-This is of course trivial compared to "real world" software but the principles still stand. TDD is a skill that needs practice to develop but by being able to break problems down into smaller components that you can test you will have a much easier time writing software.
+<!-- This is of course trivial compared to "real world" software but the principles still stand. TDD is a skill that needs practice to develop but by being able to break problems down into smaller components that you can test you will have a much easier time writing software. -->
+물론 이 프로그램은 실제로 만드는 소프트웨어들에 비하면 단순하지만, TDD는 연습이 필요합니다. 하지만 연습을 해서 익숙해지면, 문제를 작게 나눠서 정복하는 것에 익숙해 질 수 있고, 이는 큰 소프트웨러를 개발하는데 큰 도움을 줍니다.
