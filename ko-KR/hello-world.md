@@ -247,15 +247,18 @@ func Hello(name string) string {
 There's not a lot to refactor here, but we can introduce another language feature _constants_.
 아직 리팩토링 할 것이 많지는 않지만, 언어의 새로운 기능인 _상수_ 를 소개합니다.
 
-### Constants
+<!-- ### Constants -->
+### 상수
 
-Constants are defined like so
+<!-- Constants are defined like so -->
+상수는 아래와 같이 정의 됩니다.
 
 ```go
 const englishHelloPrefix = "Hello, "
 ```
 
-We can now refactor our code
+<!-- We can now refactor our code -->
+이제 우리는 코드를 아래처럼 리팩토링 할 수 있습니다.
 
 ```go
 const englishHelloPrefix = "Hello, "
@@ -265,17 +268,23 @@ func Hello(name string) string {
 }
 ```
 
-After refactoring, re-run your tests to make sure you haven't broken anything.
+<!-- After refactoring, re-run your tests to make sure you haven't broken anything. -->
+리팩토링을 한 다음에는 테스트를 실행시켜서 프로그램이 제대로 동작하는지 확인합니다.
 
-Constants should improve performance of your application as it saves you creating the `"Hello, "` string instance every time `Hello` is called.
+<!-- Constants should improve performance of your application as it saves you creating the `"Hello, "` string instance every time `Hello` is called. -->
+상수는 `Hello`함수가 호출될 때마나 `"Hello, "`인스턴스가 생성되는 것을 방지하기 때문에 프로그램의 성능을 향상시킵니다.
 
-To be clear, the performance boost is incredibly negligible for this example! But it's worth thinking about creating constants to capture the meaning of values and sometimes to aid performance.
+<!-- To be clear, the performance boost is incredibly negligible for this example! But it's worth thinking about creating constants to capture the meaning of values and sometimes to aid performance. -->
+이 예제에서의 성능 향상은 거의 없습니다. 하지만 성능 이외에도 어떤 값에 이름을 붙이는 것은 프로그램의 가독성을 높이기 때문에 추천되는 일입니다.
 
-## Hello, world... again
+<!-- ## Hello, world... again -->
+## 다시 Hello, world
 
-The next requirement is when our function is called with an empty string it defaults to printing "Hello, World", rather than "Hello, ".
+<!-- The next requirement is when our function is called with an empty string it defaults to printing "Hello, World", rather than "Hello, ". -->
+프로그램의 다음 요구사항은 우리의 함수가 인수 없이 호출되었을 때 "Hello, "대신 "Hello, World"가 출럭되게 하는 것입니다.
 
-Start by writing a new failing test
+<!-- Start by writing a new failing test -->
+실패하는 테스트를 작성하는 것에서 시작합니다.
 
 ```go
 func TestHello(t *testing.T) {
@@ -301,17 +310,23 @@ func TestHello(t *testing.T) {
 }
 ```
 
-Here we are introducing another tool in our testing arsenal, subtests. Sometimes it is useful to group tests around a "thing" and then have subtests describing different scenarios.
+<!-- Here we are introducing another tool in our testing arsenal, subtests. Sometimes it is useful to group tests around a "thing" and then have subtests describing different scenarios. -->
+여기서 우리는 subtests라는 새로운 테스팅 툴을 사용 했습니다. 상황에 따라서 테스트를 어떤 '그룹'으로 묶어서 다른 시나리오들을 테스트하는 서브테스트를 작성하는 것은 매우 유용합니다.
 
-A benefit of this approach is you can set up shared code that can be used in the other tests.
+<!-- A benefit of this approach is you can set up shared code that can be used in the other tests. -->
+그 장점중 하나는, 중복되는 부분의 코드를 다른 테스트에서도 사용할 수 있다는 점입니다.
 
-There is repeated code when we check if the message is what we expect.
+<!-- There is repeated code when we check if the message is what we expect. -->
+이 코드에서는 메시지가 예상한 값과 같은지 확인하는 부분이 중복되어 있습니다.
 
-Refactoring is not _just_ for the production code!
+<!-- Refactoring is not _just_ for the production code! -->
+리팩토링은 프로덕션 코드 _만_ 을 위한건 아니라는 것에 주의합니다.
 
-It is important that your tests _are clear specifications_ of what the code needs to do.
+<!-- It is important that your tests _are clear specifications_ of what the code needs to do. -->
+테스트는 여러분이 하려고 하는 사항에 대한 _명확한 정의_ 여야 한다는 점에도 주의합니다. 
 
-We can and should refactor our tests.
+<!-- We can and should refactor our tests. -->
+그러므로 우리는 테스트를 리팩토링 해야합니다.
 
 ```go
 func TestHello(t *testing.T) {
@@ -338,13 +353,17 @@ func TestHello(t *testing.T) {
 }
 ```
 
-What have we done here?
+<!-- What have we done here? -->
+여기서 무엇을 한 걸까요?
 
-We've refactored our assertion into a function. This reduces duplication and improves readability of our tests. In Go you can declare functions inside other functions and assign them to variables. You can then call them, just like normal functions. We need to pass in `t *testing.T` so that we can tell the test code to fail when we need to.
+<!-- We've refactored our assertion into a function. This reduces duplication and improves readability of our tests. In Go you can declare functions inside other functions and assign them to variables. You can then call them, just like normal functions. We need to pass in `t *testing.T` so that we can tell the test code to fail when we need to. -->
+우리는 assertion들을 함수로 만듦으로서 리팩토링을 했습니다. 이는 중독을 줄여서 코드의 가독성을 높입니다. Go에서는 함수를 함수안에서 정의하고 변수 안에 대입하는 것도 가능합니다. 이렇게 대입된 함수는 다른 함수와 같은 방식으로 호출 할 수 있습니다. 테스트 조건에 실패했을 때 실패했다는 것을 알려주기 위해서 `t *testing.T`도 건냅니다.
 
-`t.Helper()` is needed to tell the test suite that this method is a helper. By doing this when it fails the line number reported will be in our _function call_ rather than inside our test helper. This will help other developers track down problems easier. If you still don't understand, comment it out, make a test fail and observe the test output.
+<!-- `t.Helper()` is needed to tell the test suite that this method is a helper. By doing this when it fails the line number reported will be in our _function call_ rather than inside our test helper. This will help other developers track down problems easier. If you still don't understand, comment it out, make a test fail and observe the test output. -->
+`t.Helper()`는 이 함수가 헬퍼 함수라는 것을 알리기 위해서 필요합니다. 이렇게 함으로서 테스트가 실패했을때 헬퍼 함수 안이 아니라 어떤 테스트가 실패했는지 제대로 출력할 수 있습니다. 이는 팀의 다른 개발자들이 에러를 더 빨리 발견할 수 있게 해줍니다. 아직 잘 모르겠다면, 테스트를 실패시켜봐서 어떻게 출력되는지 확인해 봅니다.
 
-Now that we have a well-written failing test, let's fix the code, using an `if`.
+<!-- Now that we have a well-written failing test, let's fix the code, using an `if`. -->
+이제 우리는 잘 짜인 실패하는 테스트를 가지고 있습니다, 이제 `if`를 사용해서 코드를 고칩니다.
 
 ```go
 const englishHelloPrefix = "Hello, "
@@ -357,40 +376,59 @@ func Hello(name string) string {
 }
 ```
 
-If we run our tests we should see it satisfies the new requirement and we haven't accidentally broken the other functionality.
+<!-- If we run our tests we should see it satisfies the new requirement and we haven't accidentally broken the other functionality. -->
+이제 테스트를 실행하면 우리는 새로운 요구사항을 구현했다는 사실과 동시에 다른 기능을 부수지 않았다는 것을 확인할 수 있습니다.
 
-### Back to source control
+<!-- ### Back to source control -->
+### 다시 소스 컨트롤
 
-Now we are happy with the code I would amend the previous commit so we only
-check in the lovely version of our code with its test.
+<!-- Now we are happy with the code I would amend the previous commit so we only -->
+<!-- check in the lovely version of our code with its test. -->
+코드에 문제가 없기 때문에 이전에 한 커밋을 그대로 둔채로 지금 상태를 커밋합니다.
 
-### Discipline
+<!-- ### Discipline -->
+### 규율
 
-Let's go over the cycle again
+<!-- Let's go over the cycle again -->
+사이클을 다시 한번 확인해 봅시다.
 
-* Write a test
-* Make the compiler pass
-* Run the test, see that it fails and check the error message is meaningful
-* Write enough code to make the test pass
-* Refactor
+<!-- * Write a test -->
+* 테스트를 작성
+<!-- * Make the compiler pass -->
+* 컴파일 가능하게 코드를 작성
+<!-- * Run the test, see that it fails and check the error message is meaningfu -->
+* 테스트를 실행해서 에러 메시지가 말하는 정보를 확인
+<!-- * Write enough code to make the test pass -->
+* 테스트를 패스시키기 위한 코드를 작성
+<!-- * Refactor -->
+* 리팩토링
 
-On the face of it this may seem tedious but sticking to the feedback loop is important.
+<!-- On the face of it this may seem tedious but sticking to the feedback loop is important. -->
+처음 보면 어색하지만, 이 루프를 통해서 피드백을 지속적으로 받는게 중요합니다.
 
-Not only does it ensure that you have _relevant tests_, it helps ensure _you design good software_ by refactoring with the safety of tests.
+<!-- Not only does it ensure that you have _relevant tests_, it helps ensure _you design good software_ by refactoring with the safety of tests. -->
+이 사이클을 지키면 프로그램과 _관련 있는 테스트_ 를 가지게 되는 것 이상으로 리팩토링을 지속적으로 함으로서 _좋은 소프트웨어 디자인_ 을 할 수 있게 됩니다. 
 
-Seeing the test fail is an important check because it also lets you see what the error message looks like. As a developer it can be very hard to work with a codebase when failing tests do not give a clear idea as to what the problem is.
+<!-- Seeing the test fail is an important check because it also lets you see what the error message looks like. As a developer it can be very hard to work with a codebase when failing tests do not give a clear idea as to what the problem is. -->
+테스트를 실패시키는 것은, 에러메시지의 형식을 확인할 수 있게 해주는 면에서도 중요합니다. 프로그래머로서 실패하는 테스트가 무엇이 문제인지 보여주지 않으면 작업하는데 어려움을 겪기 때문입니다.
 
-By ensuring your tests are _fast_ and setting up your tools so that running tests is simple you can get in to a state of flow when writing your code.
+<!-- By ensuring your tests are _fast_ and setting up your tools so that running tests is simple you can get in to a state of flow when writing your code. -->
+테스트를 간결하게 유지하면, 테스트를 실행시키는 속도가 _빨라지고_ 코드를 작성하는데 집중하기 쉬워집니다.
 
-By not writing tests you are committing to manually checking your code by running your software which breaks your state of flow and you won't be saving yourself any time, especially in the long run.
+<!-- By not writing tests you are committing to manually checking your code by running your software which breaks your state of flow and you won't be saving yourself any time, especially in the long run. -->
+테스트가 자동화 되어있지 않다면, 코드를 쓸떄마다 프로그램을 실행시켜서 의도한 대로 동작하는지 확인해야 할 것이고, 이는 집중을 흐트러뜨립니다.
 
-## Keep going! More requirements
+<!-- ## Keep going! More requirements -->
+## 요구 사항 추가하기
 
-Goodness me, we have more requirements. We now need to support a second parameter, specifying the language of the greeting. If a language is passed in that we do not recognise, just default to English.
+<!-- Goodness me, we have more requirements. We now need to support a second parameter, specifying the language of the greeting. If a language is passed in that we do not recognise, just default to English. -->
+요구 사항이 늘어났습니다. 어떤 언어로 인사를 할지도 두번쨰 파라미터로 조정할 수 있어야 합니다. 언어를 지정하지 않았을 때는 영어를 기본값으로 합니다. 
 
-We should be confident that we can use TDD to flesh out this functionality easily!
+<!-- We should be confident that we can use TDD to flesh out this functionality easily! -->
+우리는 TDD로 이 요구사항을 쉽게 추가할 수 있습니다!
 
-Write a test for a user passing in Spanish. Add it to the existing suite.
+<!-- Write a test for a user passing in Spanish. Add it to the existing suite. -->
+스페인어를 설정하는 유저에 대한 테스트를 작성합니다. 아래의 코드를 원래 있던 테스트에 추가합니다.
 
 ```go
     t.Run("in Spanish", func(t *testing.T) {
@@ -400,7 +438,8 @@ Write a test for a user passing in Spanish. Add it to the existing suite.
     })
 ```
 
-Remember not to cheat! _Test first_. When you try and run the test, the compiler _should_ complain because you are calling `Hello` with two arguments rather than one.
+<!-- Remember not to cheat! _Test first_. When you try and run the test, the compiler _should_ complain because you are calling `Hello` with two arguments rather than one. -->
+항상 _테스트를 먼저_ 작성하세요. 테스트를 실행하면 `Hello`를 하나가 아니라 두개의 인수로 호출하고 있기 때문에 컴파일러에서 에러가 발생할 것입니다.
 
 ```text
 ./hello_test.go:27:19: too many arguments in call to Hello
@@ -408,7 +447,8 @@ Remember not to cheat! _Test first_. When you try and run the test, the compiler
     want (string)
 ```
 
-Fix the compilation problems by adding another string argument to `Hello`
+<!-- Fix the compilation problems by adding another string argument to `Hello` -->
+`Hello`에 스트링 파라미터를 추가함으로서 컴파일 에러를 해결합니다.
 
 ```go
 func Hello(name string, language string) string {
@@ -419,7 +459,8 @@ func Hello(name string, language string) string {
 }
 ```
 
-When you try and run the test again it will complain about not passing through enough arguments to `Hello` in your other tests and in `hello.go`
+<!-- When you try and run the test again it will complain about not passing through enough arguments to `Hello` in your other tests and in `hello.go` -->
+다시 테스트를 실행하면 `hello.go` 에 있는 다른 코드에서 `Hello`에 인수가 부족하다는 에러가 뜰 겁니다.
 
 ```text
 ./hello.go:15:19: not enough arguments in call to Hello
@@ -427,13 +468,15 @@ When you try and run the test again it will complain about not passing through e
     want (string, string)
 ```
 
-Fix them by passing through empty strings. Now all your tests should compile _and_ pass, apart from our new scenario
+<!-- Fix them by passing through empty strings. Now all your tests should compile _and_ pass, apart from our new scenario -->
+비어있는 스트링을 인수로 넘겨서 고칩니다. 이제 우리의 코드는 새로운 요구 사항을 제외하면 컴파일 되고 테스트도 통과할 겁니다.
 
 ```text
 hello_test.go:29: got 'Hello, Elodie' want 'Hola, Elodie'
 ```
 
-We can use `if` here to check the language is equal to "Spanish" and if so change the message
+<!-- We can use `if` here to check the language is equal to "Spanish" and if so change the message -->
+`if`를 사용해서 언어가 "Spanish"로 설정되어있는지 확인하고 메시지를 고칠 수 있습니다.
 
 ```go
 func Hello(name string, language string) string {
@@ -449,9 +492,11 @@ func Hello(name string, language string) string {
 }
 ```
 
-The tests should now pass.
+<!-- The tests should now pass. -->
+이제 테스트가 통과할 겁니다.
 
-Now it is time to _refactor_. You should see some problems in the code, "magic" strings, some of which are repeated. Try and refactor it yourself, with every change make sure you re-run the tests to make sure your refactoring isn't breaking anything.
+<!-- Now it is time to _refactor_. You should see some problems in the code, "magic" strings, some of which are repeated. Try and refactor it yourself, with every change make sure you re-run the tests to make sure your refactoring isn't breaking anything. -->
+이제 _리팩토링_ 을 해야합니다. 여기에서 문제는 "마법" 스트링들이 있어서 반복되고 있다는 점입니다. 한번 스스로 해보세요. 무언가를 추가하거나 변경할 때마다 테스트를 다시 실행하고 리팩토링이 무언가를 부수지는 않았는지 확인합니다. 
 
 ```go
 const spanish = "Spanish"
@@ -471,13 +516,18 @@ func Hello(name string, language string) string {
 }
 ```
 
-### French
+<!-- ### French -->
+### 프랑스어
 
-* Write a test asserting that if you pass in `"French"` you get `"Bonjour, "`
-* See it fail, check the error message is easy to read
-* Do the smallest reasonable change in the code
+<!-- * Write a test asserting that if you pass in `"French"` you get `"Bonjour, "` -->
+* `"French"`를 건네면 `"Bonjour, "`를 리턴하는지 확인하는 테스트 작성하기
+<!-- * See it fail, check the error message is easy to read -->
+* 실패하는지 확인하고, 에러 메시지를 확인하기
+<!-- * Do the smallest reasonable change in the code -->
+* 최소한의 변경으로 테스트를 통과시키기
 
-You may have written something that looks roughly like this
+<!-- You may have written something that looks roughly like this -->
+여러분은 아래와 같이 코드를 썼을 겁니다.
 
 ```go
 func Hello(name string, language string) string {
@@ -497,9 +547,11 @@ func Hello(name string, language string) string {
 }
 ```
 
+<!-- ## `switch` -->
 ## `switch`
 
-When you have lots of `if` statements checking a particular value it is common to use a `switch` statement instead. We can use `switch` to refactor the code to make it easier to read and more extensible if we wish to add more language support later
+<!-- When you have lots of `if` statements checking a particular value it is common to use a `switch` statement instead. We can use `switch` to refactor the code to make it easier to read and more extensible if we wish to add more language support later -->
+특정한 값에 대해서 확인해야 하는 조건이 많아서 `if` 문이 늘어났을때는 `switch` 를 사용하는 것이 일반적입니다. `switch` 를 사용해서 코드의 가독성을 높이고 나중에 언어가 추가 됐을때 쉽게 편집할 수 있도록 리팩토링 합니다.
 
 ```go
 func Hello(name string, language string) string {
@@ -520,11 +572,14 @@ func Hello(name string, language string) string {
 }
 ```
 
-Write a test to now include a greeting in the language of your choice and you should see how simple it is to extend our _amazing_ function.
+<!-- Write a test to now include a greeting in the language of your choice and you should see how simple it is to extend our _amazing_ function. -->
+임의의 언어에 대해서 테스트 케이스를 추가해보면 얼마나 새로운 언어를 추가하는게 쉬운 일이 되었는지 확인 할 수 있을 겁니다.
 
-### one...last...refactor?
+<!-- ### one...last...refactor? -->
+### 마지막 리팩토링
 
-You could argue that maybe our function is getting a little big. The simplest refactor for this would be to extract out some functionality into another function.
+<!-- You could argue that maybe our function is getting a little big. The simplest refactor for this would be to extract out some functionality into another function. -->
+함수가 너무 커져 버린 것 같은 인상을 받았을 수 있습니다. 이를 리팩토링하는 가장 간단한 방법은 기능 중 일부를 다른 함수로 빼는 것 입니다.
 
 ```go
 func Hello(name string, language string) string {
@@ -548,35 +603,57 @@ func greetingPrefix(language string) (prefix string) {
 }
 ```
 
-A few new concepts:
+<!-- A few new concepts: -->
+새로운 개념들:
 
-* In our function signature we have made a _named return value_ `(prefix string)`.
-* This will create a variable called `prefix` in your function.
-  * It will be assigned the "zero" value. This depends on the type, for example `int`s are 0 and for strings it is `""`.
-    * You can return whatever it's set to by just calling `return` rather than `return prefix`.
-  * This will display in the Go Doc for your function so it can make the intent of your code clearer.
-* `default` in the switch case will be branched to if none of the other `case` statements match.
-* The function name starts with a lowercase letter. In Go public functions start with a capital letter and private ones start with a lowercase. We don't want the internals of our algorithm to be exposed to the world, so we made this function private.
+<!-- * In our function signature we have made a _named return value_ `(prefix string)`. -->
+* 함수의 시그네쳐에 `(prefix string)` 처럼 _네임드 리턴 값_ 을 만들 었습니다.
+<!-- * This will create a variable called `prefix` in your function. -->
+* 이는 함수안에 `prefix`라는 변수를 추가합니다.
+  <!-- * It will be assigned the "zero" value. This depends on the type, for example `int`s are 0 and for strings it is `""`. -->
+  * "zero" 값을 기본으로 가집니다. 이는 타입에 따라서 달라 집니다. 예를 들어 `int` 타입의 경우에는 0을, 스트링의 경우에는 `""`를 기본값으로 가집니다.
+    <!-- * You can return whatever it's set to by just calling `return` rather than `return prefix`. -->
+    * `return`만 호출해도 리턴할 수 있습니다. `return prefix`라고 쓰지 않아도 됩니다.
+  <!-- * This will display in the Go Doc for your function so it can make the intent of your code clearer. -->
+  * 이 시그니쳐는 Go Doc에 표시돼서 여러분이 작성한 함수의 의도를 명확하게 해줍니다.
+<!-- * `default` in the switch case will be branched to if none of the other `case` statements match. -->
+* switch 안의 `default`는 `case`의 조건 중 어느 것에도 매칭하지 않은 경우에 실행됩니다.
+<!-- * The function name starts with a lowercase letter. In Go public functions start with a capital letter and private ones start with a lowercase. We don't want the internals of our algorithm to be exposed to the world, so we made this function private. -->
+* 함수이름은 소문자로 시잡합니다. Go에서 퍼블릭 함수는 대문자로 시작하고 프라이빗 함수는 소문자로 시작합니다. 우리는 이 함수가 밖에서 보이는 것을 원하지 않기 때문에 프라이빗으로 선언합니다.
 
-## Wrapping up
+<!-- ## Wrapping up -->
+## 정리
 
-Who knew you could get so much out of `Hello, world`?
+<!-- Who knew you could get so much out of `Hello, world`? -->
+`Hello, world`에서 이만큼이나 배웠습니다.
 
-By now you should have some understanding of:
+<!-- By now you should have some understanding of: -->
+이 시점에서 여러분은 아래의 것들을 이해하고 있습니다:
 
-### Some of Go's syntax around
+<!-- ### Some of Go's syntax around -->
+### Go의 신텍스들
 
-* Writing tests
-* Declaring functions, with arguments and return types
-* `if`, `const` and `switch`
-* Declaring variables and constants
+<!-- * Writing tests -->
+* 테스트 작성
+<!-- * Declaring functions, with arguments and return types -->
+* 파라미터와 리턴 타입으로 함수를 선언
+<!-- * `if`, `const` and `switch` -->
+* `if`, `const`, 그리고 `switch`
+<!-- * Declaring variables and constants -->
+* 변수, 상수 선언
 
-### The TDD process and _why_ the steps are important
+<!-- ### The TDD process and _why_ the steps are important -->
+### _왜_ TDD 프로세스가 중요한가?
 
-* _Write a failing test and see it fail_ so we know we have written a _relevant_ test for our requirements and seen that it produces an _easy to understand description of the failure_
-* Writing the smallest amount of code to make it pass so we know we have working software
-* _Then_ refactor, backed with the safety of our tests to ensure we have well-crafted code that is easy to work with
+<!-- * _Write a failing test and see it fail_ so we know we have written a _relevant_ test for our requirements and seen that it produces an _easy to understand description of the failure_ -->
+* _실패하는 테스트를 작성하고 실패하는지 확인하는 것_ 은 요구사항과 _관련성 있는_ 테스트를 작성하고 _실패에 대한 정보_ 를 얻을 수 있게 해줍니다.
+<!-- * Writing the smallest amount of code to make it pass so we know we have working software -->
+* 테스트를 통과시키기 위한 최소한의 코드를 작성해서 프로그램이 동작하는지 확인합니다.
+<!-- * _Then_ refactor, backed with the safety of our tests to ensure we have well-crafted code that is easy to work with -->
+* 테스트로 보호 받으면서 리팩토링을 해서 코드의 가독성과 확장성을 높입니다.
 
-In our case we've gone from `Hello()` to `Hello("name")`, to `Hello("name", "French")` in small, easy to understand steps.
+<!-- In our case we've gone from `Hello()` to `Hello("name")`, to `Hello("name", "French")` in small, easy to understand steps. -->
+이 경우에 우리는 `Hello()`에서 `Hello("name")`으로, 다시 `Hello("name", "French")`로 작고, 이해하기 쉬운 테스트를 작성해 가며 코드를 변경했습니다.
 
-This is of course trivial compared to "real world" software but the principles still stand. TDD is a skill that needs practice to develop but by being able to break problems down into smaller components that you can test you will have a much easier time writing software.
+<!-- This is of course trivial compared to "real world" software but the principles still stand. TDD is a skill that needs practice to develop but by being able to break problems down into smaller components that you can test you will have a much easier time writing software. -->
+물론 이 프로그램은 실제로 만드는 소프트웨어들에 비하면 단순하지만, TDD는 연습이 필요합니다. 하지만 연습을 해서 익숙해지면, 문제를 작게 나눠서 정복하는 것에 익숙해 질 수 있고, 이는 큰 소프트웨러를 개발하는데 큰 도움을 줍니다.
