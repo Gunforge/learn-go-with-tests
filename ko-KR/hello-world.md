@@ -418,13 +418,17 @@ func Hello(name string) string {
 <!-- By not writing tests you are committing to manually checking your code by running your software which breaks your state of flow and you won't be saving yourself any time, especially in the long run. -->
 테스트가 자동화 되어있지 않다면, 코드를 쓸떄마다 프로그램을 실행시켜서 의도한 대로 동작하는지 확인해야 할 것이고, 이는 집중을 흐트러뜨립니다.
 
-## Keep going! More requirements
+<!-- ## Keep going! More requirements -->
+## 요구 사항 추가하기
 
-Goodness me, we have more requirements. We now need to support a second parameter, specifying the language of the greeting. If a language is passed in that we do not recognise, just default to English.
+<!-- Goodness me, we have more requirements. We now need to support a second parameter, specifying the language of the greeting. If a language is passed in that we do not recognise, just default to English. -->
+요구 사항이 늘어났습니다. 어떤 언어로 인사를 할지도 두번쨰 파라미터로 조정할 수 있어야 합니다. 언어를 지정하지 않았을 때는 영어를 기본값으로 합니다. 
 
-We should be confident that we can use TDD to flesh out this functionality easily!
+<!-- We should be confident that we can use TDD to flesh out this functionality easily! -->
+우리는 TDD로 이 요구사항을 쉽게 추가할 수 있습니다!
 
-Write a test for a user passing in Spanish. Add it to the existing suite.
+<!-- Write a test for a user passing in Spanish. Add it to the existing suite. -->
+스페인어를 설정하는 유저에 대한 테스트를 작성합니다. 아래의 코드를 원래 있던 테스트에 추가합니다.
 
 ```go
     t.Run("in Spanish", func(t *testing.T) {
@@ -434,7 +438,8 @@ Write a test for a user passing in Spanish. Add it to the existing suite.
     })
 ```
 
-Remember not to cheat! _Test first_. When you try and run the test, the compiler _should_ complain because you are calling `Hello` with two arguments rather than one.
+<!-- Remember not to cheat! _Test first_. When you try and run the test, the compiler _should_ complain because you are calling `Hello` with two arguments rather than one. -->
+항상 _테스트를 먼저_ 작성하세요. 테스트를 실행하면 `Hello`를 하나가 아니라 두개의 인수로 호출하고 있기 때문에 컴파일러에서 에러가 발생할 것입니다.
 
 ```text
 ./hello_test.go:27:19: too many arguments in call to Hello
@@ -442,7 +447,8 @@ Remember not to cheat! _Test first_. When you try and run the test, the compiler
     want (string)
 ```
 
-Fix the compilation problems by adding another string argument to `Hello`
+<!-- Fix the compilation problems by adding another string argument to `Hello` -->
+`Hello`에 스트링 파라미터를 추가함으로서 컴파일 에러를 해결합니다.
 
 ```go
 func Hello(name string, language string) string {
@@ -453,7 +459,8 @@ func Hello(name string, language string) string {
 }
 ```
 
-When you try and run the test again it will complain about not passing through enough arguments to `Hello` in your other tests and in `hello.go`
+<!-- When you try and run the test again it will complain about not passing through enough arguments to `Hello` in your other tests and in `hello.go` -->
+다시 테스트를 실행하면 `hello.go` 에 있는 다른 코드에서 `Hello`에 인수가 부족하다는 에러가 뜰 겁니다.
 
 ```text
 ./hello.go:15:19: not enough arguments in call to Hello
@@ -461,13 +468,15 @@ When you try and run the test again it will complain about not passing through e
     want (string, string)
 ```
 
-Fix them by passing through empty strings. Now all your tests should compile _and_ pass, apart from our new scenario
+<!-- Fix them by passing through empty strings. Now all your tests should compile _and_ pass, apart from our new scenario -->
+비어있는 스트링을 인수로 넘겨서 고칩니다. 이제 우리의 코드는 새로운 요구 사항을 제외하면 컴파일 되고 테스트도 통과할 겁니다.
 
 ```text
 hello_test.go:29: got 'Hello, Elodie' want 'Hola, Elodie'
 ```
 
-We can use `if` here to check the language is equal to "Spanish" and if so change the message
+<!-- We can use `if` here to check the language is equal to "Spanish" and if so change the message -->
+`if`를 사용해서 언어가 "Spanish"로 설정되어있는지 확인하고 메시지를 고칠 수 있습니다.
 
 ```go
 func Hello(name string, language string) string {
@@ -483,9 +492,11 @@ func Hello(name string, language string) string {
 }
 ```
 
-The tests should now pass.
+<!-- The tests should now pass. -->
+이제 테스트가 통과할 겁니다.
 
-Now it is time to _refactor_. You should see some problems in the code, "magic" strings, some of which are repeated. Try and refactor it yourself, with every change make sure you re-run the tests to make sure your refactoring isn't breaking anything.
+<!-- Now it is time to _refactor_. You should see some problems in the code, "magic" strings, some of which are repeated. Try and refactor it yourself, with every change make sure you re-run the tests to make sure your refactoring isn't breaking anything. -->
+이제 _리팩토링_ 을 해야합니다. 여기에서 문제는 "마법" 스트링들이 있어서 반복되고 있다는 점입니다. 한번 스스로 해보세요. 무언가를 추가하거나 변경할 때마다 테스트를 다시 실행하고 리팩토링이 무언가를 부수지는 않았는지 확인합니다. 
 
 ```go
 const spanish = "Spanish"
