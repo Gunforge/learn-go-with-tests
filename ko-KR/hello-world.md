@@ -547,9 +547,11 @@ func Hello(name string, language string) string {
 }
 ```
 
+<!-- ## `switch` -->
 ## `switch`
 
-When you have lots of `if` statements checking a particular value it is common to use a `switch` statement instead. We can use `switch` to refactor the code to make it easier to read and more extensible if we wish to add more language support later
+<!-- When you have lots of `if` statements checking a particular value it is common to use a `switch` statement instead. We can use `switch` to refactor the code to make it easier to read and more extensible if we wish to add more language support later -->
+특정한 값에 대해서 확인해야 하는 조건이 많아서 `if` 문이 늘어났을때는 `switch` 를 사용하는 것이 일반적입니다. `switch` 를 사용해서 코드의 가독성을 높이고 나중에 언어가 추가 됐을때 쉽게 편집할 수 있도록 리팩토링 합니다.
 
 ```go
 func Hello(name string, language string) string {
@@ -570,7 +572,8 @@ func Hello(name string, language string) string {
 }
 ```
 
-Write a test to now include a greeting in the language of your choice and you should see how simple it is to extend our _amazing_ function.
+<!-- Write a test to now include a greeting in the language of your choice and you should see how simple it is to extend our _amazing_ function. -->
+임의의 언어에 대해서 테스트 케이스를 추가해보면 얼마나 새로운 언어를 추가하는게 쉬운 일이 되었는지 확인 할 수 있을 겁니다.
 
 ### one...last...refactor?
 
