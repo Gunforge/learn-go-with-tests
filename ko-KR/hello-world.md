@@ -575,9 +575,11 @@ func Hello(name string, language string) string {
 <!-- Write a test to now include a greeting in the language of your choice and you should see how simple it is to extend our _amazing_ function. -->
 임의의 언어에 대해서 테스트 케이스를 추가해보면 얼마나 새로운 언어를 추가하는게 쉬운 일이 되었는지 확인 할 수 있을 겁니다.
 
-### one...last...refactor?
+<!-- ### one...last...refactor? -->
+### 마지막 리팩토링
 
-You could argue that maybe our function is getting a little big. The simplest refactor for this would be to extract out some functionality into another function.
+<!-- You could argue that maybe our function is getting a little big. The simplest refactor for this would be to extract out some functionality into another function. -->
+함수가 너무 커져 버린 것 같은 인상을 받았을 수 있습니다. 이를 리팩토링하는 가장 간단한 방법은 기능 중 일부를 다른 함수로 빼는 것 입니다.
 
 ```go
 func Hello(name string, language string) string {
@@ -601,15 +603,23 @@ func greetingPrefix(language string) (prefix string) {
 }
 ```
 
-A few new concepts:
+<!-- A few new concepts: -->
+새로운 개념들:
 
-* In our function signature we have made a _named return value_ `(prefix string)`.
-* This will create a variable called `prefix` in your function.
-  * It will be assigned the "zero" value. This depends on the type, for example `int`s are 0 and for strings it is `""`.
-    * You can return whatever it's set to by just calling `return` rather than `return prefix`.
-  * This will display in the Go Doc for your function so it can make the intent of your code clearer.
-* `default` in the switch case will be branched to if none of the other `case` statements match.
-* The function name starts with a lowercase letter. In Go public functions start with a capital letter and private ones start with a lowercase. We don't want the internals of our algorithm to be exposed to the world, so we made this function private.
+<!-- * In our function signature we have made a _named return value_ `(prefix string)`. -->
+* 함수의 시그네쳐에 `(prefix string)` 처럼 _네임드 리턴 값_ 을 만들 었습니다.
+<!-- * This will create a variable called `prefix` in your function. -->
+* 이는 함수안에 `prefix`라는 변수를 추가합니다.
+  <!-- * It will be assigned the "zero" value. This depends on the type, for example `int`s are 0 and for strings it is `""`. -->
+  * "zero" 값을 기본으로 가집니다. 이는 타입에 따라서 달라 집니다. 예를 들어 `int` 타입의 경우에는 0을, 스트링의 경우에는 `""`를 기본값으로 가집니다.
+    <!-- * You can return whatever it's set to by just calling `return` rather than `return prefix`. -->
+    * `return`만 호출해도 리턴할 수 있습니다. `return prefix`라고 쓰지 않아도 됩니다.
+  <!-- * This will display in the Go Doc for your function so it can make the intent of your code clearer. -->
+  * 이 시그니쳐는 Go Doc에 표시돼서 여러분이 작성한 함수의 의도를 명확하게 해줍니다.
+<!-- * `default` in the switch case will be branched to if none of the other `case` statements match. -->
+* switch 안의 `default`는 `case`의 조건 중 어느 것에도 매칭하지 않은 경우에 실행됩니다.
+<!-- * The function name starts with a lowercase letter. In Go public functions start with a capital letter and private ones start with a lowercase. We don't want the internals of our algorithm to be exposed to the world, so we made this function private. -->
+* 함수이름은 소문자로 시잡합니다. Go에서 퍼블릭 함수는 대문자로 시작하고 프라이빗 함수는 소문자로 시작합니다. 우리는 이 함수가 밖에서 보이는 것을 원하지 않기 때문에 프라이빗으로 선언합니다.
 
 ## Wrapping up
 
