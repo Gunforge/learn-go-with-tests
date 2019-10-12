@@ -386,25 +386,37 @@ func Hello(name string) string {
 <!-- check in the lovely version of our code with its test. -->
 코드에 문제가 없기 때문에 이전에 한 커밋을 그대로 둔채로 지금 상태를 커밋합니다.
 
-### Discipline
+<!-- ### Discipline -->
+### 규율
 
-Let's go over the cycle again
+<!-- Let's go over the cycle again -->
+사이클을 다시 한번 확인해 봅시다.
 
-* Write a test
-* Make the compiler pass
-* Run the test, see that it fails and check the error message is meaningful
-* Write enough code to make the test pass
-* Refactor
+<!-- * Write a test -->
+* 테스트를 작성
+<!-- * Make the compiler pass -->
+* 컴파일 가능하게 코드를 작성
+<!-- * Run the test, see that it fails and check the error message is meaningfu -->
+* 테스트를 실행해서 에러 메시지가 말하는 정보를 확인
+<!-- * Write enough code to make the test pass -->
+* 테스트를 패스시키기 위한 코드를 작성
+<!-- * Refactor -->
+* 리팩토링
 
-On the face of it this may seem tedious but sticking to the feedback loop is important.
+<!-- On the face of it this may seem tedious but sticking to the feedback loop is important. -->
+처음 보면 어색하지만, 이 루프를 통해서 피드백을 지속적으로 받는게 중요합니다.
 
-Not only does it ensure that you have _relevant tests_, it helps ensure _you design good software_ by refactoring with the safety of tests.
+<!-- Not only does it ensure that you have _relevant tests_, it helps ensure _you design good software_ by refactoring with the safety of tests. -->
+이 사이클을 지키면 프로그램과 _관련 있는 테스트_ 를 가지게 되는 것 이상으로 리팩토링을 지속적으로 함으로서 _좋은 소프트웨어 디자인_ 을 할 수 있게 됩니다. 
 
-Seeing the test fail is an important check because it also lets you see what the error message looks like. As a developer it can be very hard to work with a codebase when failing tests do not give a clear idea as to what the problem is.
+<!-- Seeing the test fail is an important check because it also lets you see what the error message looks like. As a developer it can be very hard to work with a codebase when failing tests do not give a clear idea as to what the problem is. -->
+테스트를 실패시키는 것은, 에러메시지의 형식을 확인할 수 있게 해주는 면에서도 중요합니다. 프로그래머로서 실패하는 테스트가 무엇이 문제인지 보여주지 않으면 작업하는데 어려움을 겪기 때문입니다.
 
-By ensuring your tests are _fast_ and setting up your tools so that running tests is simple you can get in to a state of flow when writing your code.
+<!-- By ensuring your tests are _fast_ and setting up your tools so that running tests is simple you can get in to a state of flow when writing your code. -->
+테스트를 간결하게 유지하면, 테스트를 실행시키는 속도가 _빨라지고_ 코드를 작성하는데 집중하기 쉬워집니다.
 
-By not writing tests you are committing to manually checking your code by running your software which breaks your state of flow and you won't be saving yourself any time, especially in the long run.
+<!-- By not writing tests you are committing to manually checking your code by running your software which breaks your state of flow and you won't be saving yourself any time, especially in the long run. -->
+테스트가 자동화 되어있지 않다면, 코드를 쓸떄마다 프로그램을 실행시켜서 의도한 대로 동작하는지 확인해야 할 것이고, 이는 집중을 흐트러뜨립니다.
 
 ## Keep going! More requirements
 
