@@ -621,11 +621,14 @@ func greetingPrefix(language string) (prefix string) {
 <!-- * The function name starts with a lowercase letter. In Go public functions start with a capital letter and private ones start with a lowercase. We don't want the internals of our algorithm to be exposed to the world, so we made this function private. -->
 * 함수이름은 소문자로 시잡합니다. Go에서 퍼블릭 함수는 대문자로 시작하고 프라이빗 함수는 소문자로 시작합니다. 우리는 이 함수가 밖에서 보이는 것을 원하지 않기 때문에 프라이빗으로 선언합니다.
 
-## Wrapping up
+<!-- ## Wrapping up -->
+## 정리
 
-Who knew you could get so much out of `Hello, world`?
+<!-- Who knew you could get so much out of `Hello, world`? -->
+`Hello, world`에서 이만큼이나 배웠습니다.
 
-By now you should have some understanding of:
+<!-- By now you should have some understanding of: -->
+이 시점에서 여러분은 아래의 것들을 이해하고 있습니다:
 
 ### Some of Go's syntax around
 
