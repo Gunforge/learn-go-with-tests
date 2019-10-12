@@ -630,12 +630,17 @@ func greetingPrefix(language string) (prefix string) {
 <!-- By now you should have some understanding of: -->
 이 시점에서 여러분은 아래의 것들을 이해하고 있습니다:
 
-### Some of Go's syntax around
+<!-- ### Some of Go's syntax around -->
+### Go의 신텍스들
 
-* Writing tests
-* Declaring functions, with arguments and return types
-* `if`, `const` and `switch`
-* Declaring variables and constants
+<!-- * Writing tests -->
+* 테스트 작성
+<!-- * Declaring functions, with arguments and return types -->
+* 파라미터와 리턴 타입으로 함수를 선언
+<!-- * `if`, `const` and `switch` -->
+* `if`, `const`, 그리고 `switch`
+<!-- * Declaring variables and constants -->
+* 변수, 상수 선언
 
 ### The TDD process and _why_ the steps are important
 
