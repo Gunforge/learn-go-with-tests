@@ -90,9 +90,11 @@ func Repeat(character string) string {
 <!-- Additional variants of the for loop are described [here](https://gobyexample.com/for). -->
 for문을 어떻게 쓰는지 좀 더 자세하게 확인하고 싶다면 [여기](https://gobyexample.com/for)를 확인하세요
 
-## Refactor
+<!-- ## Refactor -->
+## 리팩토링
 
-Now it's time to refactor and introduce another construct `+=` assignment operator.
+<!-- Now it's time to refactor and introduce another construct `+=` assignment operator. -->
+리팩토링을 하면서 `+=` 라는 대입 연산자를 소개합니다.
 
 ```go
 const repeatCount = 5
@@ -106,7 +108,8 @@ func Repeat(character string) string {
 }
 ```
 
-`+=` the Add AND assignment operator, adds the right operand to the left operand and assigns the result to left operand. It works with other types like integers.
+<!-- `+=` the Add AND assignment operator, adds the right operand to the left operand and assigns the result to left operand. It works with other types like integers. -->
+덧셈과 대입을 동시에 하는 `+=` 연산자는 오른쪽 피연산자를 왼쪽 피연산자에 더하고 그 결과를 왼쪽 피연산자에 대입합니다. 이 연산자는 int 와 같은 다른 타입에서도 똑같이 동작합니다.
 
 ### Benchmarking
 
