@@ -31,7 +31,8 @@ func TestRepeat(t *testing.T) {
 }
 ```
 
-## Try and run the test
+<!-- ## Try and run the test -->
+## 테스트 실행
 
 `./repeat_test.go:6:14: undefined: Repeat`
 
