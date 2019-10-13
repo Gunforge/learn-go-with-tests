@@ -164,8 +164,12 @@ _주의_ 기본값은 벤치마크들이 순서대로 실행되도록 되어있�
 <!-- * Have a look through the [strings](https://golang.org/pkg/strings) package. Find functions you think could be useful and experiment with them by writing tests like we have here. Investing time learning the standard library will really pay off over time. -->
 * [strings](https://golang.org/pkg/strings) 패키지를 확입합니다. 유용해 보이는 함수를 찾아보고 우리가 했던 것처럼 테스트를 먼저 작성하는 방식으로 실험을 해봅니다. 표준 라이브러리를 공부하는 것은 장기적으로 봤을때 매우 유익합니다.
 
-## Wrapping up
+<!-- ## Wrapping up -->
+## 마무리
 
-* More TDD practice
-* Learned `for`
-* Learned how to write benchmarks
+<!-- * More TDD practice -->
+* TDD 연습
+<!-- * Learned `for` -->
+* `for`문
+<!-- * Learned how to write benchmarks -->
+* 벤치마크 작성법
