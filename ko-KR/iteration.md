@@ -111,9 +111,11 @@ func Repeat(character string) string {
 <!-- `+=` the Add AND assignment operator, adds the right operand to the left operand and assigns the result to left operand. It works with other types like integers. -->
 덧셈과 대입을 동시에 하는 `+=` 연산자는 오른쪽 피연산자를 왼쪽 피연산자에 더하고 그 결과를 왼쪽 피연산자에 대입합니다. 이 연산자는 int 와 같은 다른 타입에서도 똑같이 동작합니다.
 
-### Benchmarking
+<!-- ### Benchmarking -->
+### 벤치마킹
 
-Writing [benchmarks](https://golang.org/pkg/testing/#hdr-Benchmarks) in Go is another first-class feature of the language and it is very similar to writing tests.
+<!-- Writing [benchmarks](https://golang.org/pkg/testing/#hdr-Benchmarks) in Go is another first-class feature of the language and it is very similar to writing tests. -->
+Go에서 [벤치마크](https://golang.org/pkg/testing/#hdr-Benchmarks)를 작성하는 기능은 언어에 포함된 first-class 기능입니다. 테스트와 사용하는 방법은 거의 유사합니다. 
 
 ```go
 func BenchmarkRepeat(b *testing.B) {
@@ -123,15 +125,20 @@ func BenchmarkRepeat(b *testing.B) {
 }
 ```
 
-You'll see the code is very similar to a test.
+<!-- You'll see the code is very similar to a test. -->
+코드의 형식이 테스트와 매우 비슷한 것을 확인 할 수 있습니다.
 
-The `testing.B` gives you access to the cryptically named `b.N`.
+<!-- The `testing.B` gives you access to the cryptically named `b.N`. -->
+`testing.B`는 암호같은 `b.N`을 제공합니다.
 
-When the benchmark code is executed, it runs `b.N` times and measures how long it takes.
+<!-- When the benchmark code is executed, it runs `b.N` times and measures how long it takes. -->
+벤치마크 코드가 실행되면, 이 코드는 `b.N`번 실행되고 얼마나 걸렸는지 측정하게 됩니다.
 
-The amount of times the code is run shouldn't matter to you, the framework will determine what is a "good" value for that to let you have some decent results.
+<!-- The amount of times the code is run shouldn't matter to you, the framework will determine what is a "good" value for that to let you have some decent results. -->
+프레임워크가 알아서 "괜찮은" 횟수를 정해서 실행시켜 주기때문에, 코드를 쓸때는 신경쓰지 않아도 됩니다.
 
-To run the benchmarks do `go test -bench=.` (or if you're in Windows Powershell `go test -bench="."`)
+<!-- To run the benchmarks do `go test -bench=.` (or if you're in Windows Powershell `go test -bench="."`) -->
+벤치마크를 실행시키기 위해서는 `go test -bench=.`를 실행힙나다 (윈도우 파워쉘 환경에서는 `go test -bench="."`)
 
 ```text
 goos: darwin
@@ -141,9 +148,11 @@ pkg: github.com/quii/learn-go-with-tests/for/v4
 PASS
 ```
 
-What `136 ns/op` means is our function takes on average 136 nanoseconds to run \(on my computer\). Which is pretty ok! To test this it ran it 10000000 times.
+<!-- What `136 ns/op` means is our function takes on average 136 nanoseconds to run \(on my computer\). Which is pretty ok! To test this it ran it 10000000 times. -->
+`136ns/op`가 의미하는 바는 \(제 컴퓨터에서\) 우리의 함수가 실행되는데 평균 136 nanoseconds (나노초) 가 걸렸다는 것을 의미합니다. 꽤 괜찮은 숫자네요! 이를 테스트하기 위해서 10000000 번 실행된 것을 알 수 있습니다.
 
-_NOTE_ by default Benchmarks are run sequentially.
+<!-- _NOTE_ by default Benchmarks are run sequentially. -->
+_주의_ 기본값은 벤치마크들이 순서대로 실행되도록 되어있습니다.
 
 ## Practice exercises
 
