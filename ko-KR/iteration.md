@@ -36,11 +36,14 @@ func TestRepeat(t *testing.T) {
 
 `./repeat_test.go:6:14: undefined: Repeat`
 
-## Write the minimal amount of code for the test to run and check the failing test output
+<!-- ## Write the minimal amount of code for the test to run and check the failing test output -->
+## 테스트를 통과시키기 위한 최소한의 코드를 작성한뒤 출력을 확인
 
-_Keep the discipline!_ You don't need to know anything new right now to make the test fail properly.
+<!-- _Keep the discipline!_ You don't need to know anything new right now to make the test fail properly. -->
+_규율을 지키세요_. 테스트를 실패시키기 위해서 새로 배워야 할 사항은 없습니다.
 
-All you need to do right now is enough to make it compile so you can check your test is written well.
+<!-- All you need to do right now is enough to make it compile so you can check your test is written well. -->
+지금 해야 할 것은 테스트가 잘 짜였는지 확인하기 위해서 컴파일 되는지 확인 하는 것 입니다.
 
 ```go
 package iteration
@@ -50,7 +53,8 @@ func Repeat(character string) string {
 }
 ```
 
-Isn't it nice to know you already know enough Go to write tests for some basic problems? This means you can now play with the production code as much as you like and know it's behaving as you'd hope.
+<!-- Isn't it nice to know you already know enough Go to write tests for some basic problems? This means you can now play with the production code as much as you like and know it's behaving as you'd hope. -->
+간단한 문제에 대한 테스트를 Go로 작성하는데 충분한 지식을 이미 가지고 있다는 것이 놀랍지 않나요? 이는 실전에서도 생각한대로 동작하는 코드를 작성할 수 있음을 의미합니다.
 
 `repeat_test.go:10: expected 'aaaaa' but got ''`
 
