@@ -1,12 +1,17 @@
-# Iteration
+<!-- # Iteration -->
+# 이터레이션
 
-**[You can find all the code for this chapter here](https://github.com/quii/learn-go-with-tests/tree/master/for)**
+<!-- **[You can find all the code for this chapter here](https://github.com/quii/learn-go-with-tests/tree/master/for)** -->
+**[이 챕터에서 사용된 코드는 여기서 다운로드 받을 수 있습니다](https://github.com/quii/learn-go-with-tests/tree/master/for)**
 
-To do stuff repeatedly in Go, you'll need `for`. In Go there are no `while`, `do`, `until` keywords, you can only use `for`. Which is a good thing!
+<!-- To do stuff repeatedly in Go, you'll need `for`. In Go there are no `while`, `do`, `until` keywords, you can only use `for`. Which is a good thing! -->
+Go에서 어떤 작업을 반복하기 위해서는 `for`문을 사용해야 합니다. Go에서는 `while`, `do`, `until`같은 키워드들이 없기 때문에 `for`만 써야 합니다.
 
-Let's write a test for a function that repeats a character 5 times.
+<!-- Let's write a test for a function that repeats a character 5 times. -->
+문자를 5번 반복해서 출력하는 함수에 대한 테스트를 작성합니다.
 
-There's nothing new so far, so try and write it yourself for practice.
+<!-- There's nothing new so far, so try and write it yourself for practice. -->
+전에까지 한 것과 크게 달라지는 점은 없기 때문에 연습삼아서 스스로 해 보는 것을 추천합니다.
 
 ## Write the test first
 
