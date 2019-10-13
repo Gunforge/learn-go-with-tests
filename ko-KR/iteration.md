@@ -58,9 +58,11 @@ func Repeat(character string) string {
 
 `repeat_test.go:10: expected 'aaaaa' but got ''`
 
-## Write enough code to make it pass
+<!-- ## Write enough code to make it pass -->
+## 테스트를 패스 시키기 위한 최소한의 코드 작성
 
 The `for` syntax is very unremarkable and follows most C-like languages.
+`for`은 C와 같은 언어들과 동일하게 동작합니다.
 
 ```go
 func Repeat(character string) string {
@@ -72,17 +74,21 @@ func Repeat(character string) string {
 }
 ```
 
-Unlike other languages like C, Java, or JavaScript there are no parentheses surrounding the three components of the for statement and the braces { } are always required. You might wonder what is happening in the row
+<!-- Unlike other languages like C, Java, or JavaScript there are no parentheses surrounding the three components of the for statement and the braces { } are always required. You might wonder what is happening in the row -->
+하지만 C, Java, Javscript 같은 언어들과는 다르게 괄호를 사용하지 않고, 중괄호는 상황과 관계없이 언제나 사용해야 합니다.
 
 ```go
     var repeated string
 ```
 
-as we've been using `:=` so far to declare and initializing variables. However, `:=` is simply [short hand for both steps](https://gobyexample.com/variables). Here we are declaring a `string` variable only. Hence, the explicit version. We can also use `var` to declare functions, as we'll see later on.
+<!-- as we've been using `:=` so far to declare and initializing variables. However, `:=` is simply [short hand for both steps](https://gobyexample.com/variables). Here we are declaring a `string` variable only. Hence, the explicit version. We can also use `var` to declare functions, as we'll see later on. -->
+지금 까지는 변수를 선언하고 초기화 하기 위해서 `:=`를 사용해 왔습니다. 하지만, `:=`는 단순히 [두 작업에 대한 단축어](https://gobyexample.com/variables)에 불과합니다. 여기서는 `string`변수를 선언만 하고 있습니다. 이쪽이 좀 더 명시적인 방법입니다. 나중에 확인 할 것이지만 `var`는 함수를 선언하는데에도 사용할 수 있습니다.
 
-Run the test and it should pass.
+<!-- Run the test and it should pass. -->
+테스트를 실행하면 패스할 겁니다.
 
-Additional variants of the for loop are described [here](https://gobyexample.com/for).
+<!-- Additional variants of the for loop are described [here](https://gobyexample.com/for). -->
+for문을 어떻게 쓰는지 좀 더 자세하게 확인하고 싶다면 [여기](https://gobyexample.com/for)를 확인하세요
 
 ## Refactor
 
