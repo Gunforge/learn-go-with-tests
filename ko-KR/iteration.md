@@ -154,11 +154,15 @@ PASS
 <!-- _NOTE_ by default Benchmarks are run sequentially. -->
 _주의_ 기본값은 벤치마크들이 순서대로 실행되도록 되어있습니다.
 
-## Practice exercises
+<!-- ## Practice exercises -->
+## 연습 문제
 
-* Change the test so a caller can specify how many times the character is repeated and then fix the code
-* Write `ExampleRepeat` to document your function
-* Have a look through the [strings](https://golang.org/pkg/strings) package. Find functions you think could be useful and experiment with them by writing tests like we have here. Investing time learning the standard library will really pay off over time.
+<!-- * Change the test so a caller can specify how many times the character is repeated and then fix the code -->
+* 테스트 함수를 수정해서 함수의 유저가 문자의 출력 횟수를 조정할 수 있게 하고 해당하는 코드를 작성합니다.
+<!-- * Write `ExampleRepeat` to document your function -->
+* 함수를 문서화 하기 위해서 `ExampleRepeat`를 작성합니다.
+<!-- * Have a look through the [strings](https://golang.org/pkg/strings) package. Find functions you think could be useful and experiment with them by writing tests like we have here. Investing time learning the standard library will really pay off over time. -->
+* [strings](https://golang.org/pkg/strings) 패키지를 확입합니다. 유용해 보이는 함수를 찾아보고 우리가 했던 것처럼 테스트를 먼저 작성하는 방식으로 실험을 해봅니다. 표준 라이브러리를 공부하는 것은 장기적으로 봤을때 매우 유익합니다.
 
 ## Wrapping up
 
