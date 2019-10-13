@@ -13,7 +13,8 @@ Go에서 어떤 작업을 반복하기 위해서는 `for`문을 사용해야 합
 <!-- There's nothing new so far, so try and write it yourself for practice. -->
 전에까지 한 것과 크게 달라지는 점은 없기 때문에 연습삼아서 스스로 해 보는 것을 추천합니다.
 
-## Write the test first
+<!-- ## Write the test first -->
+## 테스트 먼저 작성
 
 ```go
 package iteration
