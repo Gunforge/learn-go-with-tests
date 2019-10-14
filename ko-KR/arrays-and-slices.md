@@ -64,9 +64,11 @@ which works well for arrays. -->
 <!-- By running `go test` the compiler will fail with `./sum_test.go:10:15: undefined: Sum` -->
 `go test`로 테스트를 실행하면 `./sum_test.go:10:15: undefined: Sum`이라는 컴파일 에러가 출력됩니다.
 
-## Write the minimal amount of code for the test to run and check the failing test output
+<!-- ## Write the minimal amount of code for the test to run and check the failing test output -->
+## 최소한의 코드를 작성하고 출력 확인하기
 
-In `sum.go`
+<!-- In `sum.go` -->
+`sum.go`에 아래의 코드를 추가합니다.
 
 ```go
 package main
@@ -76,8 +78,10 @@ func Sum(numbers [5]int) int {
 }
 ```
 
-Your test should now fail with _a clear error message_
+<!-- Your test should now fail with _a clear error message_ -->
+다음의 _에러 메세지_ 와 함께 테스트가 실해 할 겁니다.
 
+<!-- `sum_test.go:13: got 0 want 15 given, [1 2 3 4 5]` -->
 `sum_test.go:13: got 0 want 15 given, [1 2 3 4 5]`
 
 ## Write enough code to make it pass
