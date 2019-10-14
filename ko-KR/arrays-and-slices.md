@@ -16,9 +16,11 @@ take an array of numbers and return the total. -->
 <!-- Let's use our TDD skills -->
 TDD스킬을 사용합시다.
 
-## Write the test first
+<!-- ## Write the test first -->
+## 테스트 먼저 작성
 
-In `sum_test.go`
+<!-- In `sum_test.go` -->
+`sum_test.go`에 아래의 코드를 작성합니다.
 
 ```go
 package main
@@ -38,17 +40,23 @@ func TestSum(t *testing.T) {
 }
 ```
 
-Arrays have a _fixed capacity_ which you define when you declare the variable.
-We can initialize an array in two ways:
+<!-- Arrays have a _fixed capacity_ which you define when you declare the variable. -->
+배열은 선언 할 떄 지정된 _고정된 크기_ 를 가집니다.
+<!-- We can initialize an array in two ways: -->
+배열은 두가지 방식으로 선언 가능합니다:
 
+<!-- * \[N\]type{value1, value2, ..., valueN} e.g. `numbers := [5]int{1, 2, 3, 4, 5}` -->
 * \[N\]type{value1, value2, ..., valueN} e.g. `numbers := [5]int{1, 2, 3, 4, 5}`
+<!-- * \[...\]type{value1, value2, ..., valueN} e.g. `numbers := [...]int{1, 2, 3, 4, 5}` -->
 * \[...\]type{value1, value2, ..., valueN} e.g. `numbers := [...]int{1, 2, 3, 4, 5}`
 
-It is sometimes useful to also print the inputs to the function in the error
+<!-- It is sometimes useful to also print the inputs to the function in the error
 message and we are using the `%v` placeholder which is the "default" format,
-which works well for arrays.
+which works well for arrays. -->
+에러가 발생했을때 함수가 어떤 파라미터로 호출되었는지 출력하는 것이 유용할 떄가 있습니다. 기본값으로 포멧을 지정하는 `%v`가 배열을 출력하는데 알맞습니다.
 
 [Read more about the format strings](https://golang.org/pkg/fmt/)
+[포멧 스트링에 대해서 확인](http://golang.org/pkg/fmt)
 
 ## Try to run the test
 
