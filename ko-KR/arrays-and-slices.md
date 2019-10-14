@@ -123,20 +123,25 @@ values, the index and the value. We are choosing to ignore the index value by
 using `_` [blank identifier](https://golang.org/doc/effective_go.html#blank). -->
 `range`는 배열을 iterate 합니다. 호출 될때마다 값과, 그 값에 대한 인덱스 두 값을 반환 합니다. 여기서 우리는 `_`[blank identifier](https://golang.org/doc/effective_go.html#blank) 를 사용해서 인덱스를 무시하도록 하고 있습니다. 
 
-### Arrays and their type
+<!-- ### Arrays and their type -->
+### 배열과 타입
 
-An interesting property of arrays is that the size is encoded in its type. If you try
+<!-- An interesting property of arrays is that the size is encoded in its type. If you try
 to pass an `[4]int` into a function that expects `[5]int`, it won't compile.
 They are different types so it's just the same as trying to pass a `string` into
-a function that wants an `int`.
+a function that wants an `int`. -->
+배열의 특이한 점은 크기가 타입안에 고정되어 있다는 점 입니다. `[5]int`를 받는 함수에 `[4]int`를 건네면 컴파일 에러가 발생합니다. 이 둘은 완전히 다름 타입이어서 `int`를 받는 함수에 `string`을 건네는 것과 같은 의미를 가집니다. 
 
-You may be thinking it's quite cumbersome that arrays have a fixed length, and most
-of the time you probably won't be using them!
+<!-- You may be thinking it's quite cumbersome that arrays have a fixed length, and most
+of the time you probably won't be using them! -->
+배열이 고정된 길이를 가져야 한다는 사실은 불편하다고 느꼈을 수 있습니다. 하지만 다행히도 대부분의 경우에는 배열을 사용하지 않아도 됩니다.
 
-Go has _slices_ which do not encode the size of the collection and instead can
-have any size.
+<!-- Go has _slices_ which do not encode the size of the collection and instead can
+have any size. -->
+Go는 임의의 길이를 가질 수 있는 컬렉션 _slices_ 를 가지고 있습니다.
 
-The next requirement will be to sum collections of varying sizes.
+<!-- The next requirement will be to sum collections of varying sizes. -->
+다음 요구사항은 임의의 크기의 컬렉션에 대한 덧셈을 구현하는 것입니다.
 
 ## Write the test first
 
