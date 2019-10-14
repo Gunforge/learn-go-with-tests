@@ -84,7 +84,8 @@ func Sum(numbers [5]int) int {
 <!-- `sum_test.go:13: got 0 want 15 given, [1 2 3 4 5]` -->
 `sum_test.go:13: got 0 want 15 given, [1 2 3 4 5]`
 
-## Write enough code to make it pass
+<!-- ## Write enough code to make it pass -->
+## 테스트를 통과시키기 위한 코드 작성
 
 ```go
 func Sum(numbers [5]int) int {
@@ -99,6 +100,7 @@ func Sum(numbers [5]int) int {
 To get the value out of an array at a particular index, just use `array[index]`
 syntax. In this case, we are using `for` to iterate 5 times to work through the
 array and add each item onto `sum`.
+배열의 특정 위치에 있는 값을 인덱스로 얻기 위해서는 `array[index]`를 사용하면 됩니다. 위의 코드에서는 `for`를 사용해서 5번 반복하며 값을 `sum`에 더하고 있습니다. 
 
 ## Refactor
 
