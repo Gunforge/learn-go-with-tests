@@ -1,15 +1,20 @@
-# Arrays and slices
+<!-- # Arrays and slices -->
+# 배열과 슬라이스
 
-**[You can find all the code for this chapter here](https://github.com/quii/learn-go-with-tests/tree/master/arrays)**
+<!-- **[You can find all the code for this chapter here](https://github.com/quii/learn-go-with-tests/tree/master/arrays)** -->
+**[이 챕터에서 쓰인 코드는 여기에서 확인 할 수 있습니다.](https://github.com/quii/learn-go-with-tests/tree/master/arrays)**
 
-Arrays allow you to store multiple elements of the same type in a variable in
-a particular order.
+<!-- Arrays allow you to store multiple elements of the same type in a variable in
+a particular order. -->
+배열은 같은 타입의 변수들에 순서를 매겨 저장 할 수 있게 해줍니다.
 
-When you have an array, it is very common to have to iterate over them. So let's
+<!-- When you have an array, it is very common to have to iterate over them. So let's
 use [our new-found knowledge of `for`](iteration.md) to make a `Sum` function. `Sum` will
-take an array of numbers and return the total.
+take an array of numbers and return the total. -->
+일반적으로 배열의 요소는 iterate를 통해서 접근합니다. `Sum` 함수를 만들기 위해 [전에 배웠던 `for`](itermation.md) 를 사용합시다. `Sum`은 숫자가 들어있는 배열을 입력으로 받아 총합을 반환합니다.
 
-Let's use our TDD skills
+<!-- Let's use our TDD skills -->
+TDD스킬을 사용합시다.
 
 ## Write the test first
 
