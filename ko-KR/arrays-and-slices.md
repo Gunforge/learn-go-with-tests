@@ -79,7 +79,7 @@ func Sum(numbers [5]int) int {
 ```
 
 <!-- Your test should now fail with _a clear error message_ -->
-다음의 _에러 메세지_ 와 함께 테스트가 실해 할 겁니다.
+다음의 _에러 메세지_ 와 함께 테스트가 실패 할 겁니다.
 
 <!-- `sum_test.go:13: got 0 want 15 given, [1 2 3 4 5]` -->
 `sum_test.go:13: got 0 want 15 given, [1 2 3 4 5]`
