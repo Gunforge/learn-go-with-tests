@@ -1,19 +1,26 @@
-# Arrays and slices
+<!-- # Arrays and slices -->
+# 배열과 슬라이스
 
-**[You can find all the code for this chapter here](https://github.com/quii/learn-go-with-tests/tree/master/arrays)**
+<!-- **[You can find all the code for this chapter here](https://github.com/quii/learn-go-with-tests/tree/master/arrays)** -->
+**[이 챕터에서 쓰인 코드는 여기에서 확인 할 수 있습니다.](https://github.com/quii/learn-go-with-tests/tree/master/arrays)**
 
-Arrays allow you to store multiple elements of the same type in a variable in
-a particular order.
+<!-- Arrays allow you to store multiple elements of the same type in a variable in
+a particular order. -->
+배열은 같은 타입의 변수들에 순서를 매겨 저장 할 수 있게 해줍니다.
 
-When you have an array, it is very common to have to iterate over them. So let's
+<!-- When you have an array, it is very common to have to iterate over them. So let's
 use [our new-found knowledge of `for`](iteration.md) to make a `Sum` function. `Sum` will
-take an array of numbers and return the total.
+take an array of numbers and return the total. -->
+일반적으로 배열의 요소는 iterate를 통해서 접근합니다. `Sum` 함수를 만들기 위해 [전에 배웠던 `for`](itermation.md) 를 사용합시다. `Sum`은 숫자가 들어있는 배열을 입력으로 받아 총합을 반환합니다.
 
-Let's use our TDD skills
+<!-- Let's use our TDD skills -->
+TDD스킬을 사용합시다.
 
-## Write the test first
+<!-- ## Write the test first -->
+## 테스트 먼저 작성
 
-In `sum_test.go`
+<!-- In `sum_test.go` -->
+`sum_test.go`에 아래의 코드를 작성합니다.
 
 ```go
 package main
@@ -33,25 +40,35 @@ func TestSum(t *testing.T) {
 }
 ```
 
-Arrays have a _fixed capacity_ which you define when you declare the variable.
-We can initialize an array in two ways:
+<!-- Arrays have a _fixed capacity_ which you define when you declare the variable. -->
+배열은 선언 할 떄 지정된 _고정된 크기_ 를 가집니다.
+<!-- We can initialize an array in two ways: -->
+배열은 두가지 방식으로 선언 가능합니다:
 
+<!-- * \[N\]type{value1, value2, ..., valueN} e.g. `numbers := [5]int{1, 2, 3, 4, 5}` -->
 * \[N\]type{value1, value2, ..., valueN} e.g. `numbers := [5]int{1, 2, 3, 4, 5}`
+<!-- * \[...\]type{value1, value2, ..., valueN} e.g. `numbers := [...]int{1, 2, 3, 4, 5}` -->
 * \[...\]type{value1, value2, ..., valueN} e.g. `numbers := [...]int{1, 2, 3, 4, 5}`
 
-It is sometimes useful to also print the inputs to the function in the error
+<!-- It is sometimes useful to also print the inputs to the function in the error
 message and we are using the `%v` placeholder which is the "default" format,
-which works well for arrays.
+which works well for arrays. -->
+에러가 발생했을때 함수가 어떤 파라미터로 호출되었는지 출력하는 것이 유용할 떄가 있습니다. 기본값으로 포멧을 지정하는 `%v`가 배열을 출력하는데 알맞습니다.
 
-[Read more about the format strings](https://golang.org/pkg/fmt/)
+<!-- [Read more about the format strings](https://golang.org/pkg/fmt/) -->
+[포멧 스트링에 대해서 확인](http://golang.org/pkg/fmt)
 
-## Try to run the test
+<!-- ## Try to run the test -->
+## 테스트 실행해 보기
 
-By running `go test` the compiler will fail with `./sum_test.go:10:15: undefined: Sum`
+<!-- By running `go test` the compiler will fail with `./sum_test.go:10:15: undefined: Sum` -->
+`go test`로 테스트를 실행하면 `./sum_test.go:10:15: undefined: Sum`이라는 컴파일 에러가 출력됩니다.
 
-## Write the minimal amount of code for the test to run and check the failing test output
+<!-- ## Write the minimal amount of code for the test to run and check the failing test output -->
+## 최소한의 코드를 작성하고 출력 확인하기
 
-In `sum.go`
+<!-- In `sum.go` -->
+`sum.go`에 아래의 코드를 추가합니다.
 
 ```go
 package main
@@ -61,11 +78,14 @@ func Sum(numbers [5]int) int {
 }
 ```
 
-Your test should now fail with _a clear error message_
+<!-- Your test should now fail with _a clear error message_ -->
+다음의 _에러 메세지_ 와 함께 테스트가 실패 할 겁니다.
 
+<!-- `sum_test.go:13: got 0 want 15 given, [1 2 3 4 5]` -->
 `sum_test.go:13: got 0 want 15 given, [1 2 3 4 5]`
 
-## Write enough code to make it pass
+<!-- ## Write enough code to make it pass -->
+## 테스트를 통과시키기 위한 코드 작성
 
 ```go
 func Sum(numbers [5]int) int {
@@ -77,13 +97,16 @@ func Sum(numbers [5]int) int {
 }
 ```
 
-To get the value out of an array at a particular index, just use `array[index]`
+<!-- To get the value out of an array at a particular index, just use `array[index]`
 syntax. In this case, we are using `for` to iterate 5 times to work through the
-array and add each item onto `sum`.
+array and add each item onto `sum`. -->
+배열의 특정 위치에 있는 값을 인덱스로 얻기 위해서는 `array[index]`를 사용하면 됩니다. 위의 코드에서는 `for`를 사용해서 5번 반복하며 값을 `sum`에 더하고 있습니다. 
 
-## Refactor
+<!-- ## Refactor -->
+## 리팩토링
 
-Let's introduce [`range`](https://gobyexample.com/range) to help clean up our code
+<!-- Let's introduce [`range`](https://gobyexample.com/range) to help clean up our code -->
+[`range`](https://gobyexample.com/range) 를 사용해서 코드를 정리 합시다.
 
 ```go
 func Sum(numbers [5]int) int {
@@ -95,24 +118,30 @@ func Sum(numbers [5]int) int {
 }
 ```
 
-`range` lets you iterate over an array. Every time it is called it returns two
+<!-- `range` lets you iterate over an array. Every time it is called it returns two
 values, the index and the value. We are choosing to ignore the index value by
-using `_` [blank identifier](https://golang.org/doc/effective_go.html#blank).
+using `_` [blank identifier](https://golang.org/doc/effective_go.html#blank). -->
+`range`는 배열을 iterate 합니다. 호출 될때마다 값과, 그 값에 대한 인덱스 두 값을 반환 합니다. 여기서 우리는 `_`[blank identifier](https://golang.org/doc/effective_go.html#blank) 를 사용해서 인덱스를 무시하도록 하고 있습니다. 
 
-### Arrays and their type
+<!-- ### Arrays and their type -->
+### 배열과 타입
 
-An interesting property of arrays is that the size is encoded in its type. If you try
+<!-- An interesting property of arrays is that the size is encoded in its type. If you try
 to pass an `[4]int` into a function that expects `[5]int`, it won't compile.
 They are different types so it's just the same as trying to pass a `string` into
-a function that wants an `int`.
+a function that wants an `int`. -->
+배열의 특이한 점은 크기가 타입안에 고정되어 있다는 점 입니다. `[5]int`를 받는 함수에 `[4]int`를 건네면 컴파일 에러가 발생합니다. 이 둘은 완전히 다름 타입이어서 `int`를 받는 함수에 `string`을 건네는 것과 같은 의미를 가집니다. 
 
-You may be thinking it's quite cumbersome that arrays have a fixed length, and most
-of the time you probably won't be using them!
+<!-- You may be thinking it's quite cumbersome that arrays have a fixed length, and most
+of the time you probably won't be using them! -->
+배열이 고정된 길이를 가져야 한다는 사실은 불편하다고 느꼈을 수 있습니다. 하지만 다행히도 대부분의 경우에는 배열을 사용하지 않아도 됩니다.
 
-Go has _slices_ which do not encode the size of the collection and instead can
-have any size.
+<!-- Go has _slices_ which do not encode the size of the collection and instead can
+have any size. -->
+Go는 임의의 길이를 가질 수 있는 컬렉션 _slices_ 를 가지고 있습니다.
 
-The next requirement will be to sum collections of varying sizes.
+<!-- The next requirement will be to sum collections of varying sizes. -->
+다음 요구사항은 임의의 크기의 컬렉션에 대한 덧셈을 구현하는 것입니다.
 
 ## Write the test first
 
