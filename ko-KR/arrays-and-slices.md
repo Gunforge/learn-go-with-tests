@@ -55,7 +55,7 @@ message and we are using the `%v` placeholder which is the "default" format,
 which works well for arrays. -->
 에러가 발생했을때 함수가 어떤 파라미터로 호출되었는지 출력하는 것이 유용할 떄가 있습니다. 기본값으로 포멧을 지정하는 `%v`가 배열을 출력하는데 알맞습니다.
 
-[Read more about the format strings](https://golang.org/pkg/fmt/)
+<!-- [Read more about the format strings](https://golang.org/pkg/fmt/) -->
 [포멧 스트링에 대해서 확인](http://golang.org/pkg/fmt)
 
 ## Try to run the test
