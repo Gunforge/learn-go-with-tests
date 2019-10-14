@@ -58,9 +58,11 @@ which works well for arrays. -->
 <!-- [Read more about the format strings](https://golang.org/pkg/fmt/) -->
 [포멧 스트링에 대해서 확인](http://golang.org/pkg/fmt)
 
-## Try to run the test
+<!-- ## Try to run the test -->
+## 테스트 실행해 보기
 
-By running `go test` the compiler will fail with `./sum_test.go:10:15: undefined: Sum`
+<!-- By running `go test` the compiler will fail with `./sum_test.go:10:15: undefined: Sum` -->
+`go test`로 테스트를 실행하면 `./sum_test.go:10:15: undefined: Sum`이라는 컴파일 에러가 출력됩니다.
 
 ## Write the minimal amount of code for the test to run and check the failing test output
 
