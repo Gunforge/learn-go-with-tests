@@ -102,9 +102,11 @@ syntax. In this case, we are using `for` to iterate 5 times to work through the
 array and add each item onto `sum`.
 배열의 특정 위치에 있는 값을 인덱스로 얻기 위해서는 `array[index]`를 사용하면 됩니다. 위의 코드에서는 `for`를 사용해서 5번 반복하며 값을 `sum`에 더하고 있습니다. 
 
-## Refactor
+<!-- ## Refactor -->
+## 리팩토링
 
-Let's introduce [`range`](https://gobyexample.com/range) to help clean up our code
+<!-- Let's introduce [`range`](https://gobyexample.com/range) to help clean up our code -->
+[`range`](https://gobyexample.com/range) 를 사용해서 코드를 정리 합시다.
 
 ```go
 func Sum(numbers [5]int) int {
@@ -116,9 +118,10 @@ func Sum(numbers [5]int) int {
 }
 ```
 
-`range` lets you iterate over an array. Every time it is called it returns two
+<!-- `range` lets you iterate over an array. Every time it is called it returns two
 values, the index and the value. We are choosing to ignore the index value by
-using `_` [blank identifier](https://golang.org/doc/effective_go.html#blank).
+using `_` [blank identifier](https://golang.org/doc/effective_go.html#blank). -->
+`range`는 배열을 iterate 합니다. 호출 될때마다 값과, 그 값에 대한 인덱스 두 값을 반환 합니다. 여기서 우리는 `_`[blank identifier](https://golang.org/doc/effective_go.html#blank) 를 사용해서 인덱스를 무시하도록 하고 있습니다. 
 
 ### Arrays and their type
 
