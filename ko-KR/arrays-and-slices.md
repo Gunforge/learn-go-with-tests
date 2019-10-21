@@ -182,9 +182,11 @@ func TestSum(t *testing.T) {
 }
 ```
 
-## Try and run the test
+<!-- ## Try and run the test -->
+## 테스트 실행하기
 
-This does not compile
+<!-- This does not compile -->
+컴파일이 실패 할 겁니다.
 
 `./sum_test.go:22:13: cannot use numbers (type []int) as type [5]int in argument to Sum`
 
