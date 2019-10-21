@@ -190,16 +190,21 @@ func TestSum(t *testing.T) {
 
 `./sum_test.go:22:13: cannot use numbers (type []int) as type [5]int in argument to Sum`
 
-## Write the minimal amount of code for the test to run and check the failing test output
+<!-- ## Write the minimal amount of code for the test to run and check the failing test output -->
+## 최소한의 코드를 작성하고 어떻게 실패하는지 확인하기
 
-The problem here is we can either
+<!-- The problem here is we can either -->
+여기서 문제는 다음과 같습니다
 
-* Break the existing API by changing the argument to `Sum` to be a slice rather
+<!-- * Break the existing API by changing the argument to `Sum` to be a slice rather
   than an array. When we do this we will know we have potentially ruined
-  someone's day because our _other_ test will not compile!
-* Create a new function
+  someone's day because our _other_ test will not compile! -->
+* `Sum`의 인수를 배열에서 슬라이스로 변경하는 것은 이미 존재하는 코드가 사용하는 API는 위반하기 때문에 다른 사람이 이 함수를 사용하고 있었을때 그 사람의 코드가 망가질 가능성이 있습니다.  
+<!-- * Create a new function -->
+* 새 함수 선언
 
-In our case, no-one else is using our function so rather than having two functions to maintain let's just have one.
+<!-- In our case, no-one else is using our function so rather than having two functions to maintain let's just have one. -->
+우리의 경우에는, 다른 사람이 우리 코드를 쓸 일이 없기 때문에 두개로 나누기 보다는 하나로 합칩시다.
 
 ```go
 func Sum(numbers []int) int {
@@ -211,7 +216,8 @@ func Sum(numbers []int) int {
 }
 ```
 
-If you try to run the tests they will still not compile, you will have to change the first test to pass in a slice rather than an array.
+<!-- If you try to run the tests they will still not compile, you will have to change the first test to pass in a slice rather than an array. -->
+이렇게 하고 테스트를 실행해보면 컴파일에 실패할 것입니다. 여기서는 테스트를 수정해서 통과하게 만듭시다.
 
 ## Write enough code to make it pass
 
