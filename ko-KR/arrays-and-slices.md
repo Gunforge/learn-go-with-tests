@@ -143,13 +143,16 @@ Go는 임의의 길이를 가질 수 있는 컬렉션 _slices_ 를 가지고 있
 <!-- The next requirement will be to sum collections of varying sizes. -->
 다음 요구사항은 임의의 크기의 컬렉션에 대한 덧셈을 구현하는 것입니다.
 
-## Write the test first
+<!-- ## Write the test first -->
+## 테스트 먼저 작성
 
-We will now use the [slice type][slice] which allows us to have collections of
+<!-- We will now use the [slice type][slice] which allows us to have collections of
 any size. The syntax is very similar to arrays, you just omit the size when
-declaring them
+declaring them -->
+이제 부터는 가변길이를 가지는 [슬라이스 타입][slice] 를 사용할 겁니다. 배열을 선언하는 부분에서 크기를 지정하는 부분을 빼면 됩니다.
 
-`mySlice := []int{1,2,3}` rather than `myArray := [3]int{1,2,3}`
+<!-- `mySlice := []int{1,2,3}` rather than `myArray := [3]int{1,2,3}` -->
+이를테면 `myArray := [3]int{1,2,3}` 대신 `mySlice := []int{1,2,3}`
 
 ```go
 func TestSum(t *testing.T) {
