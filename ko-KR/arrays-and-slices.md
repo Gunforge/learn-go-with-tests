@@ -143,13 +143,16 @@ Go는 임의의 길이를 가질 수 있는 컬렉션 _slices_ 를 가지고 있
 <!-- The next requirement will be to sum collections of varying sizes. -->
 다음 요구사항은 임의의 크기의 컬렉션에 대한 덧셈을 구현하는 것입니다.
 
-## Write the test first
+<!-- ## Write the test first -->
+## 테스트 먼저 작성
 
-We will now use the [slice type][slice] which allows us to have collections of
+<!-- We will now use the [slice type][slice] which allows us to have collections of
 any size. The syntax is very similar to arrays, you just omit the size when
-declaring them
+declaring them -->
+이제 부터는 가변길이를 가지는 [슬라이스 타입][slice] 를 사용할 겁니다. 배열을 선언하는 부분에서 크기를 지정하는 부분을 빼면 됩니다.
 
-`mySlice := []int{1,2,3}` rather than `myArray := [3]int{1,2,3}`
+<!-- `mySlice := []int{1,2,3}` rather than `myArray := [3]int{1,2,3}` -->
+이를테면 `myArray := [3]int{1,2,3}` 대신 `mySlice := []int{1,2,3}`
 
 ```go
 func TestSum(t *testing.T) {
@@ -179,22 +182,29 @@ func TestSum(t *testing.T) {
 }
 ```
 
-## Try and run the test
+<!-- ## Try and run the test -->
+## 테스트 실행하기
 
-This does not compile
+<!-- This does not compile -->
+컴파일이 실패 할 겁니다.
 
 `./sum_test.go:22:13: cannot use numbers (type []int) as type [5]int in argument to Sum`
 
-## Write the minimal amount of code for the test to run and check the failing test output
+<!-- ## Write the minimal amount of code for the test to run and check the failing test output -->
+## 최소한의 코드를 작성하고 어떻게 실패하는지 확인하기
 
-The problem here is we can either
+<!-- The problem here is we can either -->
+여기서 문제는 다음과 같습니다
 
-* Break the existing API by changing the argument to `Sum` to be a slice rather
+<!-- * Break the existing API by changing the argument to `Sum` to be a slice rather
   than an array. When we do this we will know we have potentially ruined
-  someone's day because our _other_ test will not compile!
-* Create a new function
+  someone's day because our _other_ test will not compile! -->
+* `Sum`의 인수를 배열에서 슬라이스로 변경하는 것은 이미 존재하는 코드가 사용하는 API는 위반하기 때문에 다른 사람이 이 함수를 사용하고 있었을때 그 사람의 코드가 망가질 가능성이 있습니다.  
+<!-- * Create a new function -->
+* 새 함수 선언
 
-In our case, no-one else is using our function so rather than having two functions to maintain let's just have one.
+<!-- In our case, no-one else is using our function so rather than having two functions to maintain let's just have one. -->
+우리의 경우에는, 다른 사람이 우리 코드를 쓸 일이 없기 때문에 두개로 나누기 보다는 하나로 합칩시다.
 
 ```go
 func Sum(numbers []int) int {
@@ -206,7 +216,8 @@ func Sum(numbers []int) int {
 }
 ```
 
-If you try to run the tests they will still not compile, you will have to change the first test to pass in a slice rather than an array.
+<!-- If you try to run the tests they will still not compile, you will have to change the first test to pass in a slice rather than an array. -->
+이렇게 하고 테스트를 실행해보면 컴파일에 실패할 것입니다. 여기서는 테스트를 수정해서 통과하게 만듭시다.
 
 ## Write enough code to make it pass
 
