@@ -219,9 +219,11 @@ func Sum(numbers []int) int {
 <!-- If you try to run the tests they will still not compile, you will have to change the first test to pass in a slice rather than an array. -->
 이렇게 하고 테스트를 실행해보면 컴파일에 실패할 것입니다. 여기서는 테스트를 수정해서 통과하게 만듭시다.
 
-## Write enough code to make it pass
+<!-- ## Write enough code to make it pass -->
+## 테스트 통과시키기
 
-It turns out that fixing the compiler problems were all we need to do here and the tests pass!
+<!-- It turns out that fixing the compiler problems were all we need to do here and the tests pass! -->
+이 경우에는 컴파일 에러만 고치면 테스트가 통과합니다.
 
 ## Refactor
 
