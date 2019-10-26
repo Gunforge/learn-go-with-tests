@@ -225,9 +225,11 @@ func Sum(numbers []int) int {
 <!-- It turns out that fixing the compiler problems were all we need to do here and the tests pass! -->
 이 경우에는 컴파일 에러만 고치면 테스트가 통과합니다.
 
-## Refactor
+<!-- ## Refactor -->
+## 리팩토링
 
-We had already refactored `Sum` and all we've done is changing from arrays to slices, so there's not a lot to do here. Remember that we must not neglect our test code in the refactoring stage and we have some to do here.
+<!-- We had already refactored `Sum` and all we've done is changing from arrays to slices, so there's not a lot to do here. Remember that we must not neglect our test code in the refactoring stage and we have some to do here. -->
+이미 모든 배열을 슬라이스로 바꾸면서 `Sum`을 리팩토링 했습니다. 그렇기 때문에 조금만 더 하면 됩니다. 리팩토링 할때 리팩토링의 대상에 테스트 코드도 포함된다는 사실을 잊지 마세요. 
 
 ```go
 func TestSum(t *testing.T) {
@@ -257,48 +259,65 @@ func TestSum(t *testing.T) {
 }
 ```
 
-It is important to question the value of your tests. It should not be a goal to
+<!-- It is important to question the value of your tests. It should not be a goal to
 have as many tests as possible, but rather to have as much _confidence_ as
 possible in your code base. Having too many tests can turn in to a real problem
-and it just adds more overhead in maintenance. **Every test has a cost**.
+and it just adds more overhead in maintenance. **Every test has a cost**. -->
+테스트가 얼마나 유의미한지 항상 체크해야 합니다. 중요한 것은 테스트 케이스의 수가 아니라 테스트를 실행함으로서 얻을 수 있는 _자신감_ 이기 때문입니다.
+__모든 테스트는 비용이 있기 때문에__ 테스트를 너무 많이 작성하는 것은 유지 비용을 늘려 또 다른 문제를 낳습니다.
 
-In our case, you can see that having two tests for this function is redundant.
+<!-- In our case, you can see that having two tests for this function is redundant.
 If it works for a slice of one size it's very likely it'll work for a slice of
-any size \(within reason\).
+any size \(within reason\). -->
+슬라이스를 사용하면, 한 사이즈에 대해서 작동하는 코드는
+다른 가변길이의 슬라이스에 대해서도 동작 할 것이기 때문에
+이 하나의 함수에 대해서 두 개의 테스트를 정의 하는 것은 불필요 합니다. 
 
-Go's built-in testing toolkit features a [coverage
+<!-- Go's built-in testing toolkit features a [coverage
 tool](https://blog.golang.org/cover), which can help identify areas of your code
 you have not covered. I do want to stress that having 100% coverage should not
 be your goal, it's just a tool to give you an idea of your coverage. If you have
 been strict with TDD, it's quite likely you'll have close to 100% coverage
-anyway.
+anyway. -->
+Go는 테스트 프레임워크 안에 [커버리지 툴](https://blog.golang.org/cover) 을 포함하고 있습니다.
+테스트 커버리지는 그저 도구일 뿐입니다. 테스트 커버리지를 100%로 만드는 것이 목표가 되어서는 안됩니다. 
+하지만 TDD를 따른다면 100% 에 가까운 커버리지를 달성하게 될 겁니다.
 
-Try running
+<!-- Try running -->
+아래 명령어를 실행합니다.
 
 `go test -cover`
 
-You should see
+<!-- You should see -->
+아래와 같이 출력 될 것입니다.
 
 ```bash
 PASS
 coverage: 100.0% of statements
 ```
 
-Now delete one of the tests and check the coverage again.
+<!-- Now delete one of the tests and check the coverage again. -->
+테스트 중에 하나를 주석 처리하고 커버리지를 다시 확인해 봅니다.
 
-Now that we are happy we have a well-tested function you should commit your
-great work before taking on the next challenge.
+<!-- Now that we are happy we have a well-tested function you should commit your
+great work before taking on the next challenge. -->
+잘 테스트된 함수가 있기 때문에 현시점에서 다음으로 진행하기 전에 커밋을 합시다.
 
-We need a new function called `SumAll` which will take a varying number of
-slices, returning a new slice containing the totals for each slice passed in.
+<!-- We need a new function called `SumAll` which will take a varying number of
+slices, returning a new slice containing the totals for each slice passed in. -->
+이제 복수의 슬라이스를 받아서 각각의 총합을 슬라이스로 반환하는 `SumAll`함수를 정의 합시다.
 
-For example
+<!-- For example -->
+예를 들면
 
-`SumAll([]int{1,2}, []int{0,9})` would return `[]int{3, 9}`
+<!-- `SumAll([]int{1,2}, []int{0,9})` would return `[]int{3, 9}` -->
+`SumAll([]int{1,2}, []int{0,9})` 는 `[]int{3, 9}` 를 리턴 할 겁니다.
 
-or
+<!-- or -->
+또는
 
-`SumAll([]int{1,1,1})` would return `[]int{3}`
+<!-- `SumAll([]int{1,1,1})` would return `[]int{3}` -->
+`SumAll([]int{1,1,1})` 는 `[]int{3}` 를 리턴 할 겁니다.
 
 ## Write the test first
 
