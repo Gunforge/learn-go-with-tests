@@ -225,9 +225,11 @@ func Sum(numbers []int) int {
 <!-- It turns out that fixing the compiler problems were all we need to do here and the tests pass! -->
 이 경우에는 컴파일 에러만 고치면 테스트가 통과합니다.
 
-## Refactor
+<!-- ## Refactor -->
+## 리팩토링
 
-We had already refactored `Sum` and all we've done is changing from arrays to slices, so there's not a lot to do here. Remember that we must not neglect our test code in the refactoring stage and we have some to do here.
+<!-- We had already refactored `Sum` and all we've done is changing from arrays to slices, so there's not a lot to do here. Remember that we must not neglect our test code in the refactoring stage and we have some to do here. -->
+이미 모든 배열을 슬라이스로 바꾸면서 `Sum`을 리팩토링 했습니다. 그렇기 때문에 조금만 더 하면 됩니다. 리팩토링 할때 리팩토링의 대상에 테스트 코드도 포함된다는 사실을 잊지 마세요. 
 
 ```go
 func TestSum(t *testing.T) {
@@ -257,50 +259,68 @@ func TestSum(t *testing.T) {
 }
 ```
 
-It is important to question the value of your tests. It should not be a goal to
+<!-- It is important to question the value of your tests. It should not be a goal to
 have as many tests as possible, but rather to have as much _confidence_ as
 possible in your code base. Having too many tests can turn in to a real problem
-and it just adds more overhead in maintenance. **Every test has a cost**.
+and it just adds more overhead in maintenance. **Every test has a cost**. -->
+테스트가 얼마나 유의미한지 항상 체크해야 합니다. 중요한 것은 테스트 케이스의 수가 아니라 테스트를 실행함으로서 얻을 수 있는 _자신감_ 이기 때문입니다.
+__모든 테스트는 비용이 있기 때문에__ 테스트를 너무 많이 작성하는 것은 유지 비용을 늘려 또 다른 문제를 낳습니다.
 
-In our case, you can see that having two tests for this function is redundant.
+<!-- In our case, you can see that having two tests for this function is redundant.
 If it works for a slice of one size it's very likely it'll work for a slice of
-any size \(within reason\).
+any size \(within reason\). -->
+슬라이스를 사용하면, 한 사이즈에 대해서 작동하는 코드는
+다른 가변길이의 슬라이스에 대해서도 동작 할 것이기 때문에
+이 하나의 함수에 대해서 두 개의 테스트를 정의 하는 것은 불필요 합니다. 
 
-Go's built-in testing toolkit features a [coverage
+<!-- Go's built-in testing toolkit features a [coverage
 tool](https://blog.golang.org/cover), which can help identify areas of your code
 you have not covered. I do want to stress that having 100% coverage should not
 be your goal, it's just a tool to give you an idea of your coverage. If you have
 been strict with TDD, it's quite likely you'll have close to 100% coverage
-anyway.
+anyway. -->
+Go는 테스트 프레임워크 안에 [커버리지 툴](https://blog.golang.org/cover) 을 포함하고 있습니다.
+테스트 커버리지는 그저 도구일 뿐입니다. 테스트 커버리지를 100%로 만드는 것이 목표가 되어서는 안됩니다. 
+하지만 TDD를 따른다면 100% 에 가까운 커버리지를 달성하게 될 겁니다.
 
-Try running
+<!-- Try running -->
+아래 명령어를 실행합니다.
 
 `go test -cover`
 
-You should see
+<!-- You should see -->
+아래와 같이 출력 될 것입니다.
 
 ```bash
 PASS
 coverage: 100.0% of statements
 ```
 
-Now delete one of the tests and check the coverage again.
+<!-- Now delete one of the tests and check the coverage again. -->
+테스트 중에 하나를 주석 처리하고 커버리지를 다시 확인해 봅니다.
 
-Now that we are happy we have a well-tested function you should commit your
-great work before taking on the next challenge.
+<!-- Now that we are happy we have a well-tested function you should commit your
+great work before taking on the next challenge. -->
+잘 테스트된 함수가 있기 때문에 현시점에서 다음으로 진행하기 전에 커밋을 합시다.
 
-We need a new function called `SumAll` which will take a varying number of
-slices, returning a new slice containing the totals for each slice passed in.
+<!-- We need a new function called `SumAll` which will take a varying number of
+slices, returning a new slice containing the totals for each slice passed in. -->
+이제 복수의 슬라이스를 받아서 각각의 총합을 슬라이스로 반환하는 `SumAll`함수를 정의 합시다.
 
-For example
+<!-- For example -->
+예를 들면
 
-`SumAll([]int{1,2}, []int{0,9})` would return `[]int{3, 9}`
+<!-- `SumAll([]int{1,2}, []int{0,9})` would return `[]int{3, 9}` -->
+`SumAll([]int{1,2}, []int{0,9})` 는 `[]int{3, 9}` 를 리턴 할 겁니다.
 
-or
+<!-- or -->
+또는
 
-`SumAll([]int{1,1,1})` would return `[]int{3}`
+<!-- `SumAll([]int{1,1,1})` would return `[]int{3}` -->
+`SumAll([]int{1,1,1})` 는 `[]int{3}` 를 리턴 할 겁니다.
 
-## Write the test first
+<!-- ## Write the test first -->
+## 테스트 먼저 작성
 
 ```go
 func TestSumAll(t *testing.T) {
@@ -314,15 +334,19 @@ func TestSumAll(t *testing.T) {
 }
 ```
 
-## Try and run the test
+<!-- ## Try and run the test -->
+## 테스트 실행
 
 `./sum_test.go:23:9: undefined: SumAll`
 
-## Write the minimal amount of code for the test to run and check the failing test output
+<!-- ## Write the minimal amount of code for the test to run and check the failing test output -->
+## 최소한의 코드를 작성하고 테스트가 어떻게 실패하는지 확인
 
-We need to define SumAll according to what our test wants.
+<!-- We need to define SumAll according to what our test wants. -->
+SumAll에서 정의된 대로 코드를 작성해야 합니다.
 
-Go can let you write [_variadic functions_](https://gobyexample.com/variadic-functions) that can take a variable number of arguments.
+<!-- Go can let you write [_variadic functions_](https://gobyexample.com/variadic-functions) that can take a variable number of arguments. -->
+[_variadic functions_](https://gobyexample.com/variadic-functions)을 사용하면 가변 갯수의 인수를 받는 함수를 정의 할 수 있습니다.
 
 ```go
 func SumAll(numbersToSum ...[]int) (sums []int) {
@@ -330,14 +354,18 @@ func SumAll(numbersToSum ...[]int) (sums []int) {
 }
 ```
 
-Try to compile but our tests still don't compile!
+<!-- Try to compile but our tests still don't compile! -->
+컴파일을 해봐도 되지 않습니다.
 
 `./sum_test.go:26:9: invalid operation: got != want (slice can only be compared to nil)`
 
-Go does not let you use equality operators with slices. You _could_ write
+<!-- Go does not let you use equality operators with slices. You _could_ write
 a function to iterate over each `got` and `want` slice and check their values
 but for convenience sake, we can use [`reflect.DeepEqual`][deepEqual] which is
-useful for seeing if _any_ two variables are the same.
+useful for seeing if _any_ two variables are the same. -->
+슬라이스에는 비교 연산자를 사용 할 수 없습니다. 대신에 `got`과 `want`의 값들을 하나씩
+반복하면서 비교하는 함수를 작성 할 수 있습니다. 하지만 [`reflect.DeepEqual`][deepEqual]
+를 사용하면 좀 더 간단하게 임의의 두 값이 같은지 비교 할 수 있습니다.
 
 ```go
 func TestSumAll(t *testing.T) {
@@ -351,11 +379,14 @@ func TestSumAll(t *testing.T) {
 }
 ```
 
-\(make sure you `import reflect` in the top of your file to have access to `DeepEqual`\)
+<!-- \(make sure you `import reflect` in the top of your file to have access to `DeepEqual`\) -->
+\(`DeepEqual`을 사용하기 위해서 파일의 상단에 `import reflect` 를 정의 했는지 확인합니다.\)
 
-It's important to note that `reflect.DeepEqual` is not "type safe", the code
+<!-- It's important to note that `reflect.DeepEqual` is not "type safe", the code
 will compile even if you did something a bit silly. To see this in action,
-temporarily change the test to:
+temporarily change the test to: -->
+`reflect.DeepEqual`은 타입을 검사해 주지 않는 다는 점을 주의해야 합니다.
+확인해 보기 위해서 테스트를 조금 수정해 봅니다.
 
 ```go
 func TestSumAll(t *testing.T) {
@@ -369,19 +400,25 @@ func TestSumAll(t *testing.T) {
 }
 ```
 
-What we have done here is try to compare a `slice` with a `string`. Which makes
+<!-- What we have done here is try to compare a `slice` with a `string`. Which makes
 no sense, but the test compiles! So while using `reflect.DeepEqual` is
 a convenient way of comparing slices \(and other things\) you must be careful
-when using it.
+when using it. -->
+이 코드는 `slice`를 `string`과 비교합니다. 아무 의미도 없는 코드이지만 컴파일에는 성공합니다.
+이런 특징을 가지고 있기 때문에 `reflect.DeepEqual`을 사용 할 때는 주의 해야합니다.
 
-Change the test back again and run it, you should have test output looking like this
+<!-- Change the test back again and run it, you should have test output looking like this -->
+테스트 코드를 원래대로 되돌려서 실행시켜 봅니다. 아래와 같은 문장이 출력 될 겁니다.
 
 `sum_test.go:30: got [] want [3 9]`
 
-## Write enough code to make it pass
+<!-- ## Write enough code to make it pass -->
+## 테스트를 통과시키기 위한 코드 작성
 
-What we need to do is iterate over the varargs, calculate the sum using our
-`Sum` function from before and then add it to the slice we will return
+<!-- What we need to do is iterate over the varargs, calculate the sum using our
+`Sum` function from before and then add it to the slice we will return -->
+varargs(가변 길이 인수)에 이터레이트 하면서 `Sum`으로 각각의 슬라이스의 합을 구하고 그 결과를
+리턴 할 슬라이스에 넣어야 합니다.
 
 ```go
 func SumAll(numbersToSum ...[]int) []int {
@@ -396,15 +433,21 @@ func SumAll(numbersToSum ...[]int) []int {
 }
 ```
 
-Lots of new things to learn!
+<!-- Lots of new things to learn! -->
+새로 배워야 할 점이 많습니다.
 
-There's a new way to create a slice. `make` allows you to create a slice with
-a starting capacity of the `len` of the `numbersToSum` we need to work through.
+<!-- There's a new way to create a slice. `make` allows you to create a slice with
+a starting capacity of the `len` of the `numbersToSum` we need to work through. -->
+먼저, 슬라이스를 생성하는 새로운 방법입니다. `make`를 사용하면 일정 크기를 확보한 슬라이스를 생성
+할 수 있습니다. 여기서는 `numberToSum`의 `len`을 초기 크기로 설정합니다.
 
-You can index slices like arrays with `mySlice[N]` to get the value out or
-assign it a new value with `=`
+<!-- You can index slices like arrays with `mySlice[N]` to get the value out or
+assign it a new value with `=` -->
+또, 슬라이스는 배열처럼 인덱스로 각각의 요소에 접근 할 수 있습니다. `mySlice[N]`로 값을 얻거나
+`=`로 값을 대입 할 수 있습니다.
 
-The tests should now pass
+<!-- The tests should now pass -->
+이제 테스트가 통과 할 겁니다.
 
 ## Refactor
 
