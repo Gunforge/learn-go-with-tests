@@ -334,7 +334,8 @@ func TestSumAll(t *testing.T) {
 }
 ```
 
-## Try and run the test
+<!-- ## Try and run the test -->
+## 테스트 실행
 
 `./sum_test.go:23:9: undefined: SumAll`
 
