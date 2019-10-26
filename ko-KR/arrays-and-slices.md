@@ -412,10 +412,13 @@ when using it. -->
 
 `sum_test.go:30: got [] want [3 9]`
 
-## Write enough code to make it pass
+<!-- ## Write enough code to make it pass -->
+## 테스트를 통과시키기 위한 코드 작성
 
-What we need to do is iterate over the varargs, calculate the sum using our
-`Sum` function from before and then add it to the slice we will return
+<!-- What we need to do is iterate over the varargs, calculate the sum using our
+`Sum` function from before and then add it to the slice we will return -->
+varargs(가변 길이 인수)에 이터레이트 하면서 `Sum`으로 각각의 슬라이스의 합을 구하고 그 결과를
+리턴 할 슬라이스에 넣어야 합니다.
 
 ```go
 func SumAll(numbersToSum ...[]int) []int {
@@ -430,15 +433,21 @@ func SumAll(numbersToSum ...[]int) []int {
 }
 ```
 
-Lots of new things to learn!
+<!-- Lots of new things to learn! -->
+새로 배워야 할 점이 많습니다.
 
-There's a new way to create a slice. `make` allows you to create a slice with
-a starting capacity of the `len` of the `numbersToSum` we need to work through.
+<!-- There's a new way to create a slice. `make` allows you to create a slice with
+a starting capacity of the `len` of the `numbersToSum` we need to work through. -->
+먼저, 슬라이스를 생성하는 새로운 방법입니다. `make`를 사용하면 일정 크기를 확보한 슬라이스를 생성
+할 수 있습니다. 여기서는 `numberToSum`의 `len`을 초기 크기로 설정합니다.
 
-You can index slices like arrays with `mySlice[N]` to get the value out or
-assign it a new value with `=`
+<!-- You can index slices like arrays with `mySlice[N]` to get the value out or
+assign it a new value with `=` -->
+또, 슬라이스는 배열처럼 인덱스로 각각의 요소에 접근 할 수 있습니다. `mySlice[N]`로 값을 얻거나
+`=`로 값을 대입 할 수 있습니다.
 
-The tests should now pass
+<!-- The tests should now pass -->
+이제 테스트가 통과 할 겁니다.
 
 ## Refactor
 
