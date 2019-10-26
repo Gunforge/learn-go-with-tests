@@ -319,7 +319,8 @@ slices, returning a new slice containing the totals for each slice passed in. --
 <!-- `SumAll([]int{1,1,1})` would return `[]int{3}` -->
 `SumAll([]int{1,1,1})` 는 `[]int{3}` 를 리턴 할 겁니다.
 
-## Write the test first
+<!-- ## Write the test first -->
+## 테스트 먼저 작성
 
 ```go
 func TestSumAll(t *testing.T) {
