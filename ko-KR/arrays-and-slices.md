@@ -339,11 +339,14 @@ func TestSumAll(t *testing.T) {
 
 `./sum_test.go:23:9: undefined: SumAll`
 
-## Write the minimal amount of code for the test to run and check the failing test output
+<!-- ## Write the minimal amount of code for the test to run and check the failing test output -->
+## 최소한의 코드를 작성하고 테스트가 어떻게 실패하는지 확인
 
-We need to define SumAll according to what our test wants.
+<!-- We need to define SumAll according to what our test wants. -->
+SumAll에서 정의된 대로 코드를 작성해야 합니다.
 
-Go can let you write [_variadic functions_](https://gobyexample.com/variadic-functions) that can take a variable number of arguments.
+<!-- Go can let you write [_variadic functions_](https://gobyexample.com/variadic-functions) that can take a variable number of arguments. -->
+[_variadic functions_](https://gobyexample.com/variadic-functions)을 사용하면 가변 갯수의 인수를 받는 함수를 정의 할 수 있습니다.
 
 ```go
 func SumAll(numbersToSum ...[]int) (sums []int) {
@@ -351,14 +354,18 @@ func SumAll(numbersToSum ...[]int) (sums []int) {
 }
 ```
 
-Try to compile but our tests still don't compile!
+<!-- Try to compile but our tests still don't compile! -->
+컴파일을 해봐도 되지 않습니다.
 
 `./sum_test.go:26:9: invalid operation: got != want (slice can only be compared to nil)`
 
-Go does not let you use equality operators with slices. You _could_ write
+<!-- Go does not let you use equality operators with slices. You _could_ write
 a function to iterate over each `got` and `want` slice and check their values
 but for convenience sake, we can use [`reflect.DeepEqual`][deepEqual] which is
-useful for seeing if _any_ two variables are the same.
+useful for seeing if _any_ two variables are the same. -->
+슬라이스에는 비교 연산자를 사용 할 수 없습니다. 대신에 `got`과 `want`의 값들을 하나씩
+반복하면서 비교하는 함수를 작성 할 수 있습니다. 하지만 [`reflect.DeepEqual`][deepEqual]
+를 사용하면 좀 더 간단하게 임의의 두 값이 같은지 비교 할 수 있습니다.
 
 ```go
 func TestSumAll(t *testing.T) {
@@ -372,11 +379,14 @@ func TestSumAll(t *testing.T) {
 }
 ```
 
-\(make sure you `import reflect` in the top of your file to have access to `DeepEqual`\)
+<!-- \(make sure you `import reflect` in the top of your file to have access to `DeepEqual`\) -->
+\(`DeepEqual`을 사용하기 위해서 파일의 상단에 `import reflect` 를 정의 했는지 확인합니다.\)
 
-It's important to note that `reflect.DeepEqual` is not "type safe", the code
+<!-- It's important to note that `reflect.DeepEqual` is not "type safe", the code
 will compile even if you did something a bit silly. To see this in action,
-temporarily change the test to:
+temporarily change the test to: -->
+`reflect.DeepEqual`은 타입을 검사해 주지 않는 다는 점을 주의해야 합니다.
+확인해 보기 위해서 테스트를 조금 수정해 봅니다.
 
 ```go
 func TestSumAll(t *testing.T) {
@@ -390,12 +400,15 @@ func TestSumAll(t *testing.T) {
 }
 ```
 
-What we have done here is try to compare a `slice` with a `string`. Which makes
+<!-- What we have done here is try to compare a `slice` with a `string`. Which makes
 no sense, but the test compiles! So while using `reflect.DeepEqual` is
 a convenient way of comparing slices \(and other things\) you must be careful
-when using it.
+when using it. -->
+이 코드는 `slice`를 `string`과 비교합니다. 아무 의미도 없는 코드이지만 컴파일에는 성공합니다.
+이런 특징을 가지고 있기 때문에 `reflect.DeepEqual`을 사용 할 때는 주의 해야합니다.
 
-Change the test back again and run it, you should have test output looking like this
+<!-- Change the test back again and run it, you should have test output looking like this -->
+테스트 코드를 원래대로 되돌려서 실행시켜 봅니다. 아래와 같은 문장이 출력 될 겁니다.
 
 `sum_test.go:30: got [] want [3 9]`
 
