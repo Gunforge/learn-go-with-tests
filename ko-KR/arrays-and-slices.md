@@ -483,7 +483,8 @@ all the items apart from the first one \(the "head"\) -->
 다음에 해야할 일은 `SumAll`을 `SumAllTails`로 바꾸는 겁니다. 이 함수는 슬라이스의 "tails"에 있는
 각각의 슬라이스의 합을 반환합니다. "tails"은 슬라이스의 인덱스 0 에있는 "head"이외의 모든 요소를 포함합니다.
 
-## Write the test first
+<!-- ## Write the test first -->
+## 테스트 먼저 작성
 
 ```go
 func TestSumAllTails(t *testing.T) {
