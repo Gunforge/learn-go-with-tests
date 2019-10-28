@@ -449,13 +449,17 @@ assign it a new value with `=` -->
 <!-- The tests should now pass -->
 이제 테스트가 통과 할 겁니다.
 
-## Refactor
+<!-- ## Refactor -->
+## 리팩토링
 
-As mentioned, slices have a capacity. If you have a slice with a capacity of
-2 and try to do `mySlice[10] = 1` you will get a _runtime_ error.
+<!-- As mentioned, slices have a capacity. If you have a slice with a capacity of
+2 and try to do `mySlice[10] = 1` you will get a _runtime_ error. -->
+슬라이스는 고정된 크기를 가지고 있기 때문에 크기 2로 선언된 슬라이스에 `mySlice[10] = 1`과 같이
+사용하면 _런타임_ 에러가 발생합니다.
 
-However, you can use the `append` function which takes a slice and a new value,
-returning a new slice with all the items in it.
+<!-- However, you can use the `append` function which takes a slice and a new value,
+returning a new slice with all the items in it. -->
+하지만 `append`를 사용하면 인수로 넘긴 슬라이스에 해당 요소를 추가한 새 슬라이스를 얻을 수 있습니다.
 
 ```go
 func SumAll(numbersToSum ...[]int) []int {
@@ -468,14 +472,19 @@ func SumAll(numbersToSum ...[]int) []int {
 }
 ```
 
-In this implementation, we are worrying less about capacity. We start with an
-empty slice `sums` and append to it the result of `Sum` as we work through the varargs.
+<!-- In this implementation, we are worrying less about capacity. We start with an
+empty slice `sums` and append to it the result of `Sum` as we work through the varargs. -->
+이렇게 구현하면, 슬라이스의 크기에 대해서는 크게 신경쓰지 않아도 됩니다.
+`sums`라는 비어있는 슬라이스에서 시작해서 `Sum`의 결과를 하나씩 더해가면 됩니다.
 
-Our next requirement is to change `SumAll` to `SumAllTails`, where it now
+<!-- Our next requirement is to change `SumAll` to `SumAllTails`, where it now
 calculates the totals of the "tails" of each slice. The tail of a collection is
-all the items apart from the first one \(the "head"\)
+all the items apart from the first one \(the "head"\) -->
+다음에 해야할 일은 `SumAll`을 `SumAllTails`로 바꾸는 겁니다. 이 함수는 슬라이스의 "tails"에 있는
+각각의 슬라이스의 합을 반환합니다. "tails"은 슬라이스의 인덱스 0 에있는 "head"이외의 모든 요소를 포함합니다.
 
-## Write the test first
+<!-- ## Write the test first -->
+## 테스트 먼저 작성
 
 ```go
 func TestSumAllTails(t *testing.T) {
@@ -488,13 +497,16 @@ func TestSumAllTails(t *testing.T) {
 }
 ```
 
-## Try and run the test
+<!-- ## Try and run the test -->
+## 테스트 실행
 
 `./sum_test.go:26:9: undefined: SumAllTails`
 
-## Write the minimal amount of code for the test to run and check the failing test output
+<!-- ## Write the minimal amount of code for the test to run and check the failing test output -->
+## 코드를 작성하고 출력을 확인
 
-Rename the function to `SumAllTails` and re-run the test
+<!-- Rename the function to `SumAllTails` and re-run the test -->
+함수를 `SumAllTails`로 이름을 바꾸고 테스트를 실행해 봅니다.
 
 `sum_test.go:30: got [3 9] want [2 9]`
 
