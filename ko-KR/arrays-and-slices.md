@@ -502,9 +502,11 @@ func TestSumAllTails(t *testing.T) {
 
 `./sum_test.go:26:9: undefined: SumAllTails`
 
-## Write the minimal amount of code for the test to run and check the failing test output
+<!-- ## Write the minimal amount of code for the test to run and check the failing test output -->
+## 코드를 작성하고 출력을 확인
 
-Rename the function to `SumAllTails` and re-run the test
+<!-- Rename the function to `SumAllTails` and re-run the test -->
+함수를 `SumAllTails`로 이름을 바꾸고 테스트를 실행해 봅니다.
 
 `sum_test.go:30: got [3 9] want [2 9]`
 
