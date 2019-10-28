@@ -497,7 +497,8 @@ func TestSumAllTails(t *testing.T) {
 }
 ```
 
-## Try and run the test
+<!-- ## Try and run the test -->
+## 테스트 실행
 
 `./sum_test.go:26:9: undefined: SumAllTails`
 
