@@ -535,13 +535,17 @@ slice operator so you can be familiar with it. -->
 위의 코드에서는 1에서 슬라이스의 끝까지를 의미하는 `numbers[1:]`를 사용했습니다.
 이 신택스를 사용해서 테스트와 코드를 작성해보면서 체화해 보는걸 추천합니다.
 
-## Refactor
+<!-- ## Refactor -->
+## 리팩토링
 
-Not a lot to refactor this time.
+<!-- Not a lot to refactor this time. -->
+이번에는 리팩토링 할 것이 많지 않습니다.
 
 What do you think would happen if you passed in an empty slice into our
 function? What is the "tail" of an empty slice? What happens when you tell Go to
 capture all elements from `myEmptySlice[1:]`?
+위의 기능을 사용하는 슬라이스가 비어있다면 어떻게 될까요? `myEmptySlice[1:]`의 동작을 어떻게
+정의 될까요?
 
 ## Write the test first
 
