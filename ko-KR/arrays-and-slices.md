@@ -547,7 +547,8 @@ capture all elements from `myEmptySlice[1:]`?
 위의 기능을 사용하는 슬라이스가 비어있다면 어떻게 될까요? `myEmptySlice[1:]`의 동작을 어떻게
 정의 될까요?
 
-## Write the test first
+<!-- ## Write the test first -->
+## 테스트 먼저 작성
 
 ```go
 func TestSumAllTails(t *testing.T) {
