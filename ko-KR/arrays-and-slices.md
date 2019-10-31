@@ -607,9 +607,11 @@ func SumAllTails(numbersToSum ...[]int) []int {
 }
 ```
 
-## Refactor
+<!-- ## Refactor -->
+## 리팩토링
 
-Our tests have some repeated code around assertion again, let's extract that into a function
+<!-- Our tests have some repeated code around assertion again, let's extract that into a function -->
+테스트 코드에 반복이 있기 때문에, 함수로 정리해 봅니다.
 
 ```go
 func TestSumAllTails(t *testing.T) {
@@ -636,9 +638,12 @@ func TestSumAllTails(t *testing.T) {
 }
 ```
 
-A handy side-effect of this is this adds a little type-safety to our code. If
+<!-- A handy side-effect of this is this adds a little type-safety to our code. If
 a silly developer adds a new test with `checkSums(t, got, "dave")` the compiler
-will stop them in their tracks.
+will stop them in their tracks. -->
+이렇게 하면 코드를 깔끔하게 하는 것 이상으로 타입에 안정성을 부여 할 수 있습니다.
+다른 프로그래머가 `checkSums(t, get, "dave")`같은 코드를 실수로 추가하면 컴파일 과정에서
+에러를 확인하고 고칠 수 있습니다.
 
 ```bash
 $ go test
