@@ -510,7 +510,8 @@ func TestSumAllTails(t *testing.T) {
 
 `sum_test.go:30: got [3 9] want [2 9]`
 
-## Write enough code to make it pass
+<!-- ## Write enough code to make it pass -->
+## 테스트를 통과시키기 위한 코드 작성
 
 ```go
 func SumAllTails(numbersToSum ...[]int) []int {
@@ -524,21 +525,30 @@ func SumAllTails(numbersToSum ...[]int) []int {
 }
 ```
 
-Slices can be sliced! The syntax is `slice[low:high]` If you omit the value on
+<!-- Slices can be sliced! The syntax is `slice[low:high]` If you omit the value on
 one of the sides of the `:` it captures everything to the side of it. In our
 case, we are saying "take from 1 to the end" with `numbers[1:]`. You might want to
 invest some time in writing other tests around slices and experimenting with the
-slice operator so you can be familiar with it.
+slice operator so you can be familiar with it. -->
+슬라이스는 슬라이스 할 수 있습니다! 신텍스는 `slice[low:high]` 입니다. 한 쪽 값을 안쓰면
+`:` 를 기준으로 값이 정의 되지 않은 부분은 슬라이스의 끝 부분까지의 요소를 의미하게 됩니다.
+위의 코드에서는 1에서 슬라이스의 끝까지를 의미하는 `numbers[1:]`를 사용했습니다.
+이 신택스를 사용해서 테스트와 코드를 작성해보면서 체화해 보는걸 추천합니다.
 
-## Refactor
+<!-- ## Refactor -->
+## 리팩토링
 
-Not a lot to refactor this time.
+<!-- Not a lot to refactor this time. -->
+이번에는 리팩토링 할 것이 많지 않습니다.
 
 What do you think would happen if you passed in an empty slice into our
 function? What is the "tail" of an empty slice? What happens when you tell Go to
 capture all elements from `myEmptySlice[1:]`?
+위의 기능을 사용하는 슬라이스가 비어있다면 어떻게 될까요? `myEmptySlice[1:]`의 동작을 어떻게
+정의 될까요?
 
-## Write the test first
+<!-- ## Write the test first -->
+## 테스트 먼저 작성
 
 ```go
 func TestSumAllTails(t *testing.T) {
@@ -564,18 +574,22 @@ func TestSumAllTails(t *testing.T) {
 }
 ```
 
-## Try and run the test
+<!-- ## Try and run the test -->
+## 테스트 실행
 
 ```text
 panic: runtime error: slice bounds out of range [recovered]
     panic: runtime error: slice bounds out of range
 ```
 
-Oh no! It's important to note the test _has compiled_, it is a runtime error.
+<!-- Oh no! It's important to note the test _has compiled_, it is a runtime error.
 Compile time errors are our friend because they help us write software that
-works, runtime errors are our enemies because they affect our users.
+works, runtime errors are our enemies because they affect our users. -->
+컴파일이 _되어 버렸습니다_, 이런 에러를 런타임 에러라고 합니다.
+컴파일에러는 프로그램을 작성하는데 도움을 주지만, 런타임 에러는 유저에게 직접 영향을 미칩니다. 
 
-## Write enough code to make it pass
+<!-- ## Write enough code to make it pass -->
+## 테스트를 통과시키기 위한 코드 작성
 
 ```go
 func SumAllTails(numbersToSum ...[]int) []int {
@@ -593,9 +607,11 @@ func SumAllTails(numbersToSum ...[]int) []int {
 }
 ```
 
-## Refactor
+<!-- ## Refactor -->
+## 리팩토링
 
-Our tests have some repeated code around assertion again, let's extract that into a function
+<!-- Our tests have some repeated code around assertion again, let's extract that into a function -->
+테스트 코드에 반복이 있기 때문에, 함수로 정리해 봅니다.
 
 ```go
 func TestSumAllTails(t *testing.T) {
@@ -622,45 +638,69 @@ func TestSumAllTails(t *testing.T) {
 }
 ```
 
-A handy side-effect of this is this adds a little type-safety to our code. If
+<!-- A handy side-effect of this is this adds a little type-safety to our code. If
 a silly developer adds a new test with `checkSums(t, got, "dave")` the compiler
-will stop them in their tracks.
+will stop them in their tracks. -->
+이렇게 하면 코드를 깔끔하게 하는 것 이상으로 타입에 안정성을 부여 할 수 있습니다.
+다른 프로그래머가 `checkSums(t, get, "dave")`같은 코드를 실수로 추가하면 컴파일 과정에서
+에러를 확인하고 고칠 수 있습니다.
 
 ```bash
 $ go test
 ./sum_test.go:52:21: cannot use "dave" (type string) as type []int in argument to checkSums
 ```
 
-## Wrapping up
+<!-- ## Wrapping up -->
+## 정리
 
-We have covered
+<!-- We have covered -->
+이 장에서 우리는 아래의 내용들을 배웠습니다.
 
-* Arrays
-* Slices
-  * The various ways to make them
-  * How they have a _fixed_ capacity but you can create new slices from old ones
-    using `append`
-  * How to slice, slices!
-* `len` to get the length of an array or slice
-* Test coverage tool
-* `reflect.DeepEqual` and why it's useful but can reduce the type-safety of your code
+<!-- * Arrays -->
+* 배열
+<!-- * Slices -->
+* 슬라이스
+  <!-- * The various ways to make them -->
+  * 생성하는 여러가지 방법
+  <!-- * How they have a _fixed_ capacity but you can create new slices from old ones
+    using `append` -->
+  * _고정된 크기_ 를 가지고 있지만 `append`를 통해서 새로운 슬라이스를 선언 할 수 있음
+  <!-- * How to slice, slices! -->
+  * 슬라이스를 슬라이스 하는 법
+<!-- * `len` to get the length of an array or slice -->
+* `len`으로 배열, 슬라이스의 길이 측정
+<!-- * Test coverage tool -->
+* 테스트 커버리지 확인
+<!-- * `reflect.DeepEqual` and why it's useful but can reduce the type-safety of your code -->
+* `reflect.DeepEqual`의 유용함과 타입 위험성.
 
-We've used slices and arrays with integers but they work with any other type
+<!-- We've used slices and arrays with integers but they work with any other type
 too, including arrays/slices themselves. So you can declare a variable of
-`[][]string` if you need to.
+`[][]string` if you need to. -->
+여기서는 배열과 슬라이스를 정수 타입에만 사용했지만, 배열과 슬라이스를 포함한 
+다른 타입에서도 사용 가능합니다. `[][]string`과 같이 선언하면 됩니다.
 
-[Check out the Go blog post on slices][blog-slice] for an in-depth look into
-slices. Try writing more tests to demonstrate what you learn from reading it.
+<!-- [Check out the Go blog post on slices][blog-slice] for an in-depth look into
+slices. Try writing more tests to demonstrate what you learn from reading it. -->
+더 많은 내용을 원하시면 [Go 블로그에 있는 슬라이스 포스트][blog-slice]를 확인하세요.
+테스트를 더 많이 써보고 뭘 배울 수 있는지 시험해 보세요.
 
-Another handy way to experiment with Go other than writing tests is the Go
+<!-- Another handy way to experiment with Go other than writing tests is the Go
 playground. You can try most things out and you can easily share your code if
-you need to ask questions. [I have made a go playground with a slice in it for you to experiment with.](https://play.golang.org/p/ICCWcRGIO68)
+you need to ask questions. [I have made a go playground with a slice in it for you to experiment with.](https://play.golang.org/p/ICCWcRGIO68) -->
+Go 플레이그라운드를 사용하면 여러가지 실험을 간단하게 할 수 있습니다.
+거의 모든 것들을 테스트 해보는게 가능하고, 질문을 하기 위해 코드를 공유하는 것도 간단합니다.
+[제가 만든 Go플레이 그라운드를 써보세요](https://play.golang.org/p/ICCWcRGIO68)
 
-[Here is an example](https://play.golang.org/p/bTrRmYfNYCp) of slicing an array 
+<!-- [Here is an example](https://play.golang.org/p/bTrRmYfNYCp) of slicing an array 
 and how changing the slice affects the original array; but a "copy" of the slice 
 will not affect the original array.
 [Another example](https://play.golang.org/p/Poth8JS28sc) of why it's a good idea 
-to make a copy of a slice after slicing a very large slice.
+to make a copy of a slice after slicing a very large slice. -->
+[여기에서는](https://play.golang.org/p/bTrRmYfNYCp) 배열을 슬라이스하고 수정하는게 원래
+배열에 어떤 영향을 미치는지 확인 할 수 있습니다. 복사를 하면 그 영향을 없앨 수 있다는 점도 알 수 있습니다.
+[또 여기에서는](https://play.golang.org/p/Poth8JS28sc) 왜 큰 슬라이스에 대해서 복사본을 만드는 것이
+좋은지 알 수 있습니다.
 
 [for]: ../iteration.md#
 [blog-slice]: https://blog.golang.org/go-slices-usage-and-internals
