@@ -510,7 +510,8 @@ func TestSumAllTails(t *testing.T) {
 
 `sum_test.go:30: got [3 9] want [2 9]`
 
-## Write enough code to make it pass
+<!-- ## Write enough code to make it pass -->
+## 테스트를 통과시키기 위한 코드 작성
 
 ```go
 func SumAllTails(numbersToSum ...[]int) []int {
@@ -524,11 +525,15 @@ func SumAllTails(numbersToSum ...[]int) []int {
 }
 ```
 
-Slices can be sliced! The syntax is `slice[low:high]` If you omit the value on
+<!-- Slices can be sliced! The syntax is `slice[low:high]` If you omit the value on
 one of the sides of the `:` it captures everything to the side of it. In our
 case, we are saying "take from 1 to the end" with `numbers[1:]`. You might want to
 invest some time in writing other tests around slices and experimenting with the
-slice operator so you can be familiar with it.
+slice operator so you can be familiar with it. -->
+슬라이스는 슬라이스 할 수 있습니다! 신텍스는 `slice[low:high]` 입니다. 한 쪽 값을 안쓰면
+`:` 를 기준으로 값이 정의 되지 않은 부분은 슬라이스의 끝 부분까지의 요소를 의미하게 됩니다.
+위의 코드에서는 1에서 슬라이스의 끝까지를 의미하는 `numbers[1:]`를 사용했습니다.
+이 신택스를 사용해서 테스트와 코드를 작성해보면서 체화해 보는걸 추천합니다.
 
 ## Refactor
 
