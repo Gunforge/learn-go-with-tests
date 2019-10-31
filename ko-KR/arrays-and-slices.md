@@ -650,36 +650,57 @@ $ go test
 ./sum_test.go:52:21: cannot use "dave" (type string) as type []int in argument to checkSums
 ```
 
-## Wrapping up
+<!-- ## Wrapping up -->
+## 정리
 
-We have covered
+<!-- We have covered -->
+이 장에서 우리는 아래의 내용들을 배웠습니다.
 
-* Arrays
-* Slices
-  * The various ways to make them
-  * How they have a _fixed_ capacity but you can create new slices from old ones
-    using `append`
-  * How to slice, slices!
-* `len` to get the length of an array or slice
-* Test coverage tool
-* `reflect.DeepEqual` and why it's useful but can reduce the type-safety of your code
+<!-- * Arrays -->
+* 배열
+<!-- * Slices -->
+* 슬라이스
+  <!-- * The various ways to make them -->
+  * 생성하는 여러가지 방법
+  <!-- * How they have a _fixed_ capacity but you can create new slices from old ones
+    using `append` -->
+  * _고정된 크기_ 를 가지고 있지만 `append`를 통해서 새로운 슬라이스를 선언 할 수 있음
+  <!-- * How to slice, slices! -->
+  * 슬라이스를 슬라이스 하는 법
+<!-- * `len` to get the length of an array or slice -->
+* `len`으로 배열, 슬라이스의 길이 측정
+<!-- * Test coverage tool -->
+* 테스트 커버리지 확인
+<!-- * `reflect.DeepEqual` and why it's useful but can reduce the type-safety of your code -->
+* `reflect.DeepEqual`의 유용함과 타입 위험성.
 
-We've used slices and arrays with integers but they work with any other type
+<!-- We've used slices and arrays with integers but they work with any other type
 too, including arrays/slices themselves. So you can declare a variable of
-`[][]string` if you need to.
+`[][]string` if you need to. -->
+여기서는 배열과 슬라이스를 정수 타입에만 사용했지만, 배열과 슬라이스를 포함한 
+다른 타입에서도 사용 가능합니다. `[][]string`과 같이 선언하면 됩니다.
 
-[Check out the Go blog post on slices][blog-slice] for an in-depth look into
-slices. Try writing more tests to demonstrate what you learn from reading it.
+<!-- [Check out the Go blog post on slices][blog-slice] for an in-depth look into
+slices. Try writing more tests to demonstrate what you learn from reading it. -->
+더 많은 내용을 원하시면 [Go 블로그에 있는 슬라이스 포스트][blog-slice]를 확인하세요.
+테스트를 더 많이 써보고 뭘 배울 수 있는지 시험해 보세요.
 
-Another handy way to experiment with Go other than writing tests is the Go
+<!-- Another handy way to experiment with Go other than writing tests is the Go
 playground. You can try most things out and you can easily share your code if
-you need to ask questions. [I have made a go playground with a slice in it for you to experiment with.](https://play.golang.org/p/ICCWcRGIO68)
+you need to ask questions. [I have made a go playground with a slice in it for you to experiment with.](https://play.golang.org/p/ICCWcRGIO68) -->
+Go 플레이그라운드를 사용하면 여러가지 실험을 간단하게 할 수 있습니다.
+거의 모든 것들을 테스트 해보는게 가능하고, 질문을 하기 위해 코드를 공유하는 것도 간단합니다.
+[제가 만든 Go플레이 그라운드를 써보세요](https://play.golang.org/p/ICCWcRGIO68)
 
-[Here is an example](https://play.golang.org/p/bTrRmYfNYCp) of slicing an array 
+<!-- [Here is an example](https://play.golang.org/p/bTrRmYfNYCp) of slicing an array 
 and how changing the slice affects the original array; but a "copy" of the slice 
 will not affect the original array.
 [Another example](https://play.golang.org/p/Poth8JS28sc) of why it's a good idea 
-to make a copy of a slice after slicing a very large slice.
+to make a copy of a slice after slicing a very large slice. -->
+[여기에서는](https://play.golang.org/p/bTrRmYfNYCp) 배열을 슬라이스하고 수정하는게 원래
+배열에 어떤 영향을 미치는지 확인 할 수 있습니다. 복사를 하면 그 영향을 없앨 수 있다는 점도 알 수 있습니다.
+[또 여기에서는](https://play.golang.org/p/Poth8JS28sc) 왜 큰 슬라이스에 대해서 복사본을 만드는 것이
+좋은지 알 수 있습니다.
 
 [for]: ../iteration.md#
 [blog-slice]: https://blog.golang.org/go-slices-usage-and-internals
