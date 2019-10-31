@@ -588,7 +588,8 @@ works, runtime errors are our enemies because they affect our users. -->
 컴파일이 _되어 버렸습니다_, 이런 에러를 런타임 에러라고 합니다.
 컴파일에러는 프로그램을 작성하는데 도움을 주지만, 런타임 에러는 유저에게 직접 영향을 미칩니다. 
 
-## Write enough code to make it pass
+<!-- ## Write enough code to make it pass -->
+## 테스트를 통과시키기 위한 코드 작성
 
 ```go
 func SumAllTails(numbersToSum ...[]int) []int {
