@@ -130,6 +130,19 @@ Taking my experience of learning with a group and my own personal way I am going
 * Some experience with programming. Understanding of concepts like `if`, variables, functions etc.
 * Comfortable with using the terminal
 
+## Use docker
+
+* download [dockerfile](https://github.com/Gunforge/learn-go-with-tests-ko/blob/master-ko/dockerfile)
+* build dockerfile using
+```sh
+docker build -t={image_name}:{tag} .
+```
+* make container using
+```sh
+docker run -it -p 6060:6060 --name={container_name} {image_name}
+```
+* To use `godoc`, at least one port should be open.
+
 ## Feedback
 
 * Add issues/submit PRs [here](https://github.com/quii/learn-go-with-tests) or [tweet me @quii](https://twitter.com/quii)
